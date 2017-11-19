@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>安逸乐 - 快递代拿</title>
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <link rel="stylesheet" href="__PUBLIC__/ydui/css/ydui.css"/>
+    <link rel="stylesheet" href="__PUBLIC__/ydui/index.css"/>
+    <link rel="stylesheet" href="http://m.ydui.org/css/demo.css"/>
+    
+    <script src="http://m.ydui.org/js/ydui.flexible.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="http://m.ydui.org/js/ydui.js"></script>
+</head>
+<body>
+<style>
+.img{
+	width:60px;
+	height:60px;
+}
+.grids-icon-kuaidi {
+    height: -0.32rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.mar{
+	margin-bottom:49.03px;
+}
+</style>
+
+<section class="g-flexview">
+
+    <div class="g-scrollview mar">
+
+        <h2 class="demo-detail-title" style="padding-top:15px;">请选择需要代拿的快递类型<br></h2>
+
+        <div class="m-grids-4" >
+        <foreach item="v" name="kuaidi">
+            <a class="grids-item" href="/anyile/xiadan/xiadan?type={$v.type}">
+                <div class="grids-icon-kuaidi">
+                    <img class="demo-icons-button" alt="{$v.kuaidi_name}" src="{$v.kuaidi_img}" />
+                </div>
+                <div class="grids-txt">{$v.kuaidi_name}</div>
+            </a>
+        </foreach> 
+        </div>
+
+    </div>
+
+</section>
+
+
+<!--底部-start-->
+    <include file="public/footer"/>
+    <!--底部-end-->
+
+
+
+</body>
+</html>

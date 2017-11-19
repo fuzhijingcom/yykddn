@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>帮买东西 -刷单</title>
+    <link rel="stylesheet" href="__PUBLIC__/css/weui.min.css"/>
+</head>
+<body>
+<div class="page">
+   
+    <div class="page__bd">
+    
+    <div id="container" class="container"><div class="zh_CN"><div class="weui-msg">
+    <div class="weui-msg__icon-area">
+        <i class="weui-icon-warn weui-icon_msg"></i>
+    </div>
+	</div></div></div>
+
+
+	<form name="cart2_form" id="cart2_form" method="post" action="{:U('xiadan_add')}">
+		<input type="hidden" name="kuaidi_name" value="{$kuaidi[kuaidi_name]}" >
+		<input type="hidden" name="order_amount" value="{$kuaidi[price]}" >
+	    
+	     <input type="hidden" name="duanhao" value="{$address.duanhao}"/>
+	     
+        <div class="weui-cells__title">商品描述</div>
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <textarea class="weui-textarea" placeholder="只填写什么东西就行了，物品名称"  name="wupin" rows="2"></textarea>
+                </div>
+            </div>
+        </div>
+        
+         <div class="weui-cells__title">每次下单，变换名字、号码</div>
+         <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">名字</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" name="consignee" value="{$address.consignee}"/>
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">号码</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" name="mobile" value="{$address.mobile}"/>
+                </div>
+            </div>
+         </div>
+        
+        <div class="weui-cells__title">收货地</div>
+        <div class="weui-cells">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" name="address" placeholder="请完善收货人信息" value="{$address.sushe}"/>
+                </div>
+            </div>
+        </div>
+        
+        
+	    <div class="weui-cells__title">服务价格(不含商品，商品另付)<br>小费到位，服务当然更到位</div>
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell weui-cell_warn">
+                <div class="weui-cell__hd"><label for="" class="weui-label">跑腿费</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="number" pattern="[0-9]*" value="weui input error" placeholder="请输入价格(￥3元起)" name="order_amount"/>
+                </div>
+                <div class="weui-cell__ft">
+                    <i class="weui-icon-warn"></i>
+                </div>
+            </div>
+        </div>
+	    
+	    
+	    <div class="weui-msg__opr-area">
+	        <p class="weui-btn-area">
+	            <button type="submit" class="weui-btn weui-btn_primary">提交订单</a>
+	        </p>
+	    </div>
+	    
+	    
+	</form>
+	 
+	 
+</div></div>
+
+</body></html>
