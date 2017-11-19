@@ -454,6 +454,7 @@ class Payment extends MobileBase {
           
            if($this->pay_code == 'weixin' && session('user.openid') && strstr($_SERVER['HTTP_USER_AGENT'],'MicroMessenger')){
 
+           //	dump('5555');
                $code_str = $this->payment->getpay($order_id,$source);
                
               exit($code_str);
