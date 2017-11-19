@@ -50,8 +50,16 @@ class Jijian extends MobileBase {
     	$list7 = D('kd_order')->where($condition)->where('order_status',7)->field('order_id')->order('order_id desc')->select();
     	
     	
+    	$con['order_id'] = array('gt',17189);
+    	$con['pay_status'] = array('eq',0);
+    	$con['type'] = array('eq','ji');
+    	$list8 = D('kd_order_ji')->where($con)->where('order_status',8)->field('order_id')->order('order_id desc')->select();
+    	
+    	
     	$this->assign('count6', count($list6));
     	$this->assign('count7', count($list7));
+    	$this->assign('count8', count($list8));
+    	//已完成，未付款
     	return $this->fetch();
     }
 
@@ -64,13 +72,20 @@ class Jijian extends MobileBase {
         $username = session('user.nickname');
     
         $order_status = I('order_status');
+        if($order_status == 8){
+        	//完成未付款
+        	$condition['pay_status'] = array('eq',0);
+        	$database = D('kd_order_ji');
+        	//读取ji表
+        }else{
+        	$condition['pay_status'] = array('eq',1);
+        	$database = D('kd_order');
+        }
+	        $condition['order_id'] = array('gt',17189);
+	        $condition['order_status'] = array('eq',$order_status);
+	        $condition['type'] = array('eq','ji');
         
-        $condition['order_id'] = array('gt',17189);
-        $condition['order_status'] = array('eq',$order_status);
-        $condition['type'] = array('eq','ji');
-        $condition['pay_status'] = array('eq',1);
-
-        $read = D('kd_order')->where($condition)->order('order_id desc')->select();
+	        $read = $database ->where($condition)->order('order_id desc')->select();
     
         $this->assign('order_status', $order_status);
         $this->assign('read', $read);
@@ -100,14 +115,16 @@ class Jijian extends MobileBase {
    		
    		$order_amount  = I('order_amount');
    		
-   		
+   		$shipping_time= date('Y-m-d H:i:s');
    		
    		$admin_note  = I('admin_note');
    		
    		$data = array(
    				'order_amount'=>$order_amount,
    				'admin_note'=>$admin_note,
-   				'pay_status'=> 0 
+   				'pay_status'=> 0 ,
+   				'order_status'=>8,
+   				'shipping_time'=> $shipping_time
    		);
    		
    		
@@ -119,6 +136,8 @@ class Jijian extends MobileBase {
    		if($data['errcode'] == 0){
    			
    			D('kd_order_ji')->where('order_id',$order_id)->data($data)->save();
+   			
+   			D('kd_order')->where('order_id',$order_id)->data(array('order_status'=>8,'shipping_time'=> $shipping_time ))->save();
    			
    			$this->success('发送成功','work/jijian/index');
    		}else {

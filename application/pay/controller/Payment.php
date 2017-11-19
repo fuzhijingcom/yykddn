@@ -81,7 +81,7 @@ class Payment extends MobileBase {
     
         // 如果已经支付过的订单直接到订单详情页面. 不再进入支付页面
         if($order['pay_status'] == 1){
-            $order_detail_url = U("jijian/order/detail",array('order_id'=>$order_id));
+            $order_detail_url = U("kuaidi/order/order_detail",array('id'=>$order_id));
             header("Location: $order_detail_url");
             exit;
         }

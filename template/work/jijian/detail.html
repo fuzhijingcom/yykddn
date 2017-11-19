@@ -81,7 +81,7 @@ font-size: 17px}
         <div class="weui-cells">
             <div class="weui-cell">
                 <div class="weui-cell__bd">
-                    <input class="weui-input" type="number" name="order_amount" step="0.01" placeholder="请输入金额"/>
+                    <input class="weui-input" type="number" name="order_amount" step="0.01" value="{$order_ji.order_amount}" placeholder="请输入金额"/>
                 </div>
             </div>
         </div>
@@ -90,7 +90,7 @@ font-size: 17px}
         <div class="weui-cells weui-cells_form">
             <div class="weui-cell">
                 <div class="weui-cell__bd">
-                    <textarea class="weui-textarea" name="admin_note" placeholder="例如：韵达快递，52013145201314" rows="4"></textarea>
+                    <textarea class="weui-textarea" name="admin_note" placeholder="例如：韵达快递，52013145201314" rows="4">{$order_ji.admin_note}</textarea>
                 </div>
             </div>
         </div>
