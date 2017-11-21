@@ -42,7 +42,7 @@ class Jijian extends MobileBase {
         
     public function index(){
     	
-    	$condition['order_id'] = array('gt',17189);
+    	$condition['order_id'] = array('gt',10189);
     	$condition['pay_status'] = array('eq',1);
     	$condition['type'] = array('eq','ji');
     	
@@ -50,15 +50,15 @@ class Jijian extends MobileBase {
     	$list7 = D('kd_order')->where($condition)->where('order_status',7)->field('order_id')->order('order_id desc')->select();
     	
     	
-    	$con['order_id'] = array('gt',17189);
+    	$con['order_id'] = array('gt',10189);
     	$con['pay_status'] = array('eq',0);
     	$con['type'] = array('eq','ji');
     	$list8 = D('kd_order_ji')->where($con)->where('order_status',8)->field('order_id')->order('order_id desc')->select();
     	
-    	
     	$this->assign('count6', count($list6));
     	$this->assign('count7', count($list7));
     	$this->assign('count8', count($list8));
+    	
     	//已完成，未付款
     	return $this->fetch();
     }
@@ -74,14 +74,18 @@ class Jijian extends MobileBase {
         $order_status = I('order_status');
         if($order_status == 8){
         	//完成未付款
-        	$condition['pay_status'] = array('eq',0);
+        	$pay_status = I('pay_status');
+        	$this->assign('pay_status', $pay_status);
+        	
+        	$condition['pay_status'] = array('eq',$pay_status);
+        	
         	$database = D('kd_order_ji');
         	//读取ji表
         }else{
         	$condition['pay_status'] = array('eq',1);
         	$database = D('kd_order');
         }
-	        $condition['order_id'] = array('gt',17189);
+	        $condition['order_id'] = array('gt',10189);
 	        $condition['order_status'] = array('eq',$order_status);
 	        $condition['type'] = array('eq','ji');
         

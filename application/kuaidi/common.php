@@ -68,6 +68,13 @@ function status($order_status) {
           case 7:
               $order_status = '已派送';
               break;
+              
+              
+          case 8:
+          	$order_status = '已完成';
+          	break;
+          	
+          	
         default:
              $order_status = '状态出错';;
         break;

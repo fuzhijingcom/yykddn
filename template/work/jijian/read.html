@@ -77,7 +77,7 @@ word-break: keep-all;white-space:nowrap;
   <tr>
               <if condition="$order_status == 6 || $order_status == 7">  <td>{$v.receiver|get_name_by_uid}</td> </if>
               <td><a href="/work/jijian/detail/order_id/{$v.order_id}" class="am-btn am-btn-success am-radius"> 
-              <if condition="$order_status == 8">再发
+              <if condition="$order_status == 8 && $pay_status == 0">再发
               <else />详情
               </if>
               </a>
