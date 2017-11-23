@@ -13,7 +13,7 @@
   <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
   <meta name="apple-mobile-web-app-title" content="Amaze UI" />
   <link rel="stylesheet" href="http://cdn.yudw.com/admin/assets/css/amazeui.min.css"/>
-
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.8.2.min.js"></script>
   <style type="text/css">
   	.am-table{
   		width: 100%;
@@ -151,6 +151,13 @@ word-break: keep-all;white-space:nowrap;
 <script src="http://cdn.yudw.com/admin/assets/js/jquery.min.js"></script>
 <script src="http://cdn.yudw.com/admin/assets/js/amazeui.min.js"></script>
 <!--<![endif]-->
+<script type="text/javascript">
 
+function stop(id){
+	if(confirm("禁止该用户?")){
+	location.href='/work/shenhe/action/?is_validated=4&id='+id;	　　
+	}
+}
+</script>
 </body>
 </html>
