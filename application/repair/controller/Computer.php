@@ -46,7 +46,7 @@ class Computer extends MobileBase
            $data['name'] = $name= session('user.nickname');
            $data['mobile'] = $mobile = I('mobile');
            $data['problem'] = $problem = I('problem');
-           $data['user_id '] = $user_id;
+           $data['user_id'] = $user_id;
            
            
            M('repair')->data($data)->save();
