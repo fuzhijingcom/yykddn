@@ -36,8 +36,8 @@ class Index extends MobileBase {
          * */
     public function index(){
 
-        $a = M('chat')->where('receive','neq',$this->user_id)->where('send',$this->user_id)->field('receive')->select();
-        $b = M('chat')->where('send','neq',$this->user_id)->where('receive',$this->user_id)->field('send')->select();
+    	$a = M('chat')->where('receive','neq',$this->user_id)->where('send',$this->user_id)->field('receive')->distinct(true)->select();
+    	$b = M('chat')->where('send','neq',$this->user_id)->where('receive',$this->user_id)->field('send')->distinct(true)->select();
         
       
        //$b = $this->more_array_unique($b);
