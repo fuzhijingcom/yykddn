@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>再次核对信息</title>
+    <link rel="stylesheet" href="__PUBLIC__/css/weui.min.css"/>
+<style type="text/css">
+body{background-color:#efeff4;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none
+}
+.container {
+padding-bottom: 20px
+}
+.weui-cells_checkbox>.weui-cell>* {
+pointer-events: none
+}
+.list__textarea-label_1IUds {
+float: left;
+color: #222;
+margin-bottom: 10px
+}
+.list__no-arrow_1QzDq:after {
+display: none!important
+}
+.list__warn_qnkn9 {
+color: #e64340!important
+}
+a.weui-cell {
+color: #222
+}
+.weui-cell__ft {
+font-size: 0
+}
+.zh_CN .weui-cell__ft,.zh_HK .weui-cell__ft,.zh_TW .weui-cell__ft {
+font-size: 17px}
+.comment__textarea-label_3n9Pv{float:left;color:#222;margin-bottom:10px}
+</style>
+</head>
+<body>
+    
+     <div class="weui-cells__title">该银行卡用于：账户提现（请务必保证信息正确）</div>
+     <div class="weui-cells__title">验证通过，不可以修改（累计填错3次，封锁账号）</div>
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">持卡人姓名</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" name="name" value="{$user_info.name}" placeholder="请输入持卡人姓名" readonly="readonly" />
+                </div>
+            </div>
+            
+             <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">银行卡帐号</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" name="account" value="{$user_info.account}" placeholder="请输入银行卡帐号" readonly="readonly" />
+                </div>
+            </div>
+            
+             <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">绑定手机号</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" name="mobile" value="{$user_info.mobile}" placeholder="请输入银行卡绑定手机号" readonly="readonly" />
+                </div>
+            </div>
+            
+             <div class="weui-cell">
+                <div class="weui-cell__hd"><label class="weui-label">证件号码</label></div>
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" name="idcard" value="{$user_info.idcard}" placeholder="请输入身份证号码" readonly="readonly" />
+                </div>
+            </div>
+            
+            
+       </div>
+       
+    
+    <div class="weui-msg__opr-area">
+        <p class="weui-btn-area">
+            <a href="/qiangdan/renzheng/kaishi" class="weui-btn weui-btn_primary">我已确认正确</a>
+            <a href="/qiangdan/renzheng" class="weui-btn weui-btn_default">返回修改</a>
+        </p>
+    </div>
+    
+    
+	</form>
+</body></html>
