@@ -425,6 +425,62 @@ class Payment extends MobileBase {
             return $this->fetch('payment');  // 分跳转 和不 跳转
     }
 
+    /* 顺职的查询结果 */
+    
+    public function payresult(){
+    	$order_id = I('order_id/d');
+    	
+    	$order = M('kd_order_sz')->where("order_id",$order_id)->find();
+    	
+    	$json = json_encode($order);
+    	
+    	echo $json;
+    	
+    }
+    
+    
+    /* 顺职的支付系统 */
+    
+    public function shunzhi(){
+    	$order_sn = I('order_sn/d');
+    	$openid = I('openid');
+    	
+    	if(!$openid){
+    		session('user.openid',$openid);
+    	}
+    	
+    	$url = "http://v.yykddn.com/pay/payment/order?order_sn=".$order_sn;
+    	$ch = curl_init();
+    	curl_setopt($ch, CURLOPT_URL, $url);
+    	curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+    	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    	$out = curl_exec($ch);
+    	curl_close($ch);
+    	
+    
+    	$order = json_decode($out,true);
+    	
+    	if(!$order){
+    		$this->error("支付出错");
+    		exit;
+    	}
+    	
+    	$order_id = $order['order_id'];
+    	
+    	$cunzai = M("kd_order_sz")->where("order_id",$order_id)->find();
+    	if(!$cunzai){
+    		M("kd_order_sz")->data($order)->save();
+    	}else {
+    		M("kd_order_sz")->where(array("order_id"=>$order_id))->data($order)->save();
+    	}
+    	
+    	$payurl = "/pay/payment/pay?order_id=".$order_id."&source=sz";
+    	$this->redirect($payurl);
+    	
+    }
+    
+    
+    
     //统一支付类
  public function pay(){     
     
@@ -436,6 +492,8 @@ class Payment extends MobileBase {
                 $database = M('kd_order');
             }elseif($source == 'ji'){
                 $database = M('kd_order_ji');
+            }elseif($source == 'sz'){
+            	$database = M('kd_order_sz');
             }
             else
             {
