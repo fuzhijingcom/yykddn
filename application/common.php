@@ -47,6 +47,19 @@ function update_pay_status_diy($order_sn,$source,$ext=array())
     	M('kd_order_ji')->where("order_sn", $order_sn)->save($updata);
     }
     
+    
+    if($source=='sz'){
+    	// 找出对应的订单
+    	$order = M('kd_order_sz')->where("order_sn",$order_sn)->find();
+    	// 修改支付状态  已支付
+    	$updata = array('pay_status'=>1,'pay_time'=>time());
+    	if(isset($ext['transaction_id'])) $updata['transaction_id'] = $ext['transaction_id'];
+    	if(isset($ext['out_trade_no'])) $updata['out_trade_no'] = $ext['out_trade_no'];
+    	M('kd_order_sz')->where("order_sn", $order_sn)->save($updata);
+    
+    }
+    
+    
     return 0;
 
 }
