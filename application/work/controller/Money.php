@@ -33,7 +33,22 @@ class Money extends MobileBase {
         }
         
     }
-   
+    public function water(){
+    	$list = M('kd_order_sz')->field('order_id,consignee,order_amount,transaction_id')->order('order_id desc')->where(array('pay_status'=>1))->select();
+    	$this->assign('list',$list);
+    	
+    	
+    	$c= count($list);
+    	
+    	for ($i=0;$i<$c;$i++){
+    		$m =  (float)$list[$i]['order_amount'];
+    		
+    		$allwater= $allwater + $m;
+    	}
+    	
+    	$this->assign("allwater",$allwater);
+    	return $this->fetch();
+    }
     public function index(){
         $all = $this->all();
         $this->assign('all', $all);
