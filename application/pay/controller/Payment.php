@@ -14,9 +14,11 @@
  */ 
 namespace app\pay\controller;
 use app\home\logic\UsersLogic;
+use think\Controller;
 use think\Request;
-
-class Payment extends MobileBase {
+use think\Session;
+//MobileBase
+class Payment extends Controller{
     
     public $payment; //  具体的支付类
     public $pay_code; //  具体的支付code
@@ -49,6 +51,13 @@ class Payment extends MobileBase {
         include_once  "plugins/payment/{$this->pay_code}/{$this->pay_code}.class.php"; // D:\wamp\www\svn_tpshop\www\plugins\payment\alipay\alipayPayment.class.php                       
         $code = '\\'.$this->pay_code; // \alipay
         $this->payment = new $code();
+        
+        Session::start();
+        header("Cache-control: private");  // history.back返回后输入框值丢失问题 参考文章 http://www.tp-shop.cn/article_id_1465.html  http://blog.csdn.net/qinchaoguang123456/article/details/29852881
+        $this->session_id = session_id(); // 当前的 session_id
+        define('SESSION_ID',$this->session_id); //将当前的session_id保存为常量，供其它方法调用
+        
+        
     }
    
     /*
@@ -241,9 +250,9 @@ class Payment extends MobileBase {
      * 订单支付页面
      */
     public function kuaidi(){
-        $user_id = session('user.user_id');
+        $user_id = $_SESSION['user']['user_id'];
         if(empty($user_id)){
-            $this->error('登录已失效，请重新操作');
+            $this->error('登录已失效，请重新操作。');
         }
         
         if(is_weixin()==false){
@@ -431,7 +440,7 @@ class Payment extends MobileBase {
     	$order_id = I('order_id/d');
     	
     	$order = M('kd_order_sz')->where("order_id",$order_id)->find();
-    	
+    	//field("order_id,order_sn,pay_status,pay_code,pay_name,pay_time,order_omount,transaction_id,out_trade_no")
     	$json = json_encode($order);
     	
     	echo $json;
@@ -461,7 +470,7 @@ class Payment extends MobileBase {
     	$order = json_decode($out,true);
     	
     	if(!$order){
-    		$this->error("支付出错");
+    		$this->error("请再试一次");
     		exit;
     	}
     	
