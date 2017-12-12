@@ -518,8 +518,12 @@ class Payment extends Controller{
             $pay_radio = "pay_code=weixin";
             $config_value = parse_url_param($pay_radio); // 类似于 pay_code=alipay&bank_code=CCB-DEBIT 参数
             //微信JS支付
+          if(session('user.openid') == NULL){
+              $this->error('用户openid不存在');
+              exit;
+          }
           
-           if($this->pay_code == 'weixin' && session('user.openid') && strstr($_SERVER['HTTP_USER_AGENT'],'MicroMessenger')){
+           if($this->pay_code == 'weixin'  && strstr($_SERVER['HTTP_USER_AGENT'],'MicroMessenger')){
 
            //	dump('5555');
                $code_str = $this->payment->getpay($order_id,$source);
