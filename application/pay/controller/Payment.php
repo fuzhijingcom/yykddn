@@ -1,17 +1,4 @@
 <?php
-/**
- * tpshop
- * ============================================================================
- * * 版权所有 2015-2027 深圳搜豹网络科技有限公司，并保留所有权利。
- * 网站地址: http://www.tp-shop.cn
- * ----------------------------------------------------------------------------
- * 这不是一个自由软件！您只能在不用于商业目的的前提下对程序代码进行修改和使用 .
- * 不允许对程序代码以任何形式任何目的的再发布。
- * ============================================================================
- * $Author: IT宇宙人 2015-08-10 $
- * 
- * use app\mobile\logic\Pushgood;
- */ 
 namespace app\pay\controller;
 use app\home\logic\UsersLogic;
 use think\Controller;
@@ -455,8 +442,16 @@ class Payment extends Controller{
     	$openid = I('openid');
     	
     	if(!$openid){
+    		$openid = $this->GetOpenid();
+    		//$this->error('openid参数为空');
+    		exit;
+    	}else{
     		session('user.openid',$openid);
     	}
+    	
+    	
+    	
+    	
     	
     	$url = "http://v.yykddn.com/pay/payment/order?order_sn=".$order_sn;
     	$ch = curl_init();
@@ -470,11 +465,20 @@ class Payment extends Controller{
     	$order = json_decode($out,true);
     	
     	if(!$order){
-    		$this->error("请再试一次");
+    		$this->error("点击太快了，请再试一次");
+    		exit;
+    	}
+    	$order_id = $order['order_id'];
+    	
+    	
+    	if($order['pay_status'] == 1){
+    		$url = 'http://v.yykddn.com/kuaidi/send/check?order_id='.$order_id.'&source=sz';
+    		$this->redirect($url);
     		exit;
     	}
     	
-    	$order_id = $order['order_id'];
+    	
+    	
     	
     	$cunzai = M("kd_order_sz")->where("order_id",$order_id)->find();
     	if(!$cunzai){
@@ -771,4 +775,115 @@ class Payment extends Controller{
       return $user;
   }
 
+  /////////////////////////////////////////////
+  // 仅仅获取 OpendId
+  public function GetOpenid()
+  {
+  	if($_SESSION['openid'])
+  		return $_SESSION['openid'];
+  		//通过code获得openid
+  		if (!isset($_GET['code'])){
+  			//触发微信返回code码
+  			$baseUrl = urlencode($this->get_url_openid());
+  			$url = $this->__CreateOauthUrlForCode($baseUrl); // 获取 code地址
+  			Header("Location: $url"); // 跳转到微信授权页面 需要用户确认登录的页面
+  			exit();
+  		} else {
+  			//上面获取到code后这里跳转回来
+  			$code = $_GET['code'];
+  			$data = $this->getOpenidFromMp($code);//获取网页授权access_token和用户openid
+  			return $data['openid'];
+  		}
+  }
+  /**
+   * 获取当前的url 地址
+   * @return type
+   */
+  private function get_url_openid() {
+  	$sys_protocal = isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == '443' ? 'https://' : 'http://';
+  	$php_self = $_SERVER['PHP_SELF'] ? $_SERVER['PHP_SELF'] : $_SERVER['SCRIPT_NAME'];
+  	$path_info = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '';
+  	$relate_url = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : $php_self.(isset($_SERVER['QUERY_STRING']) ? '?'.$_SERVER['QUERY_STRING'] : $path_info);
+  	return $sys_protocal.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '').$relate_url;
+  }
+  /**
+   *
+   * 通过code从工作平台获取openid机器access_token
+   * @param string $code 微信跳转回来带上的code
+   *
+   * @return openid
+   */
+  public function GetOpenidFromMp($code)
+  {
+  	//通过code获取网页授权access_token 和 openid 。网页授权access_token是一次性的，而基础支持的access_token的是有时间限制的：7200s。
+  	//1、微信网页授权是通过OAuth2.0机制实现的，在用户授权给公众号后，公众号可以获取到一个网页授权特有的接口调用凭证（网页授权access_token），通过网页授权access_token可以进行授权后接口调用，如获取用户基本信息；
+  	//2、其他微信接口，需要通过基础支持中的“获取access_token”接口来获取到的普通access_token调用。
+  	$url = $this->__CreateOauthUrlForOpenid($code);
+  	$ch = curl_init();//初始化curl
+  	curl_setopt($ch, CURLOPT_TIMEOUT, 300);//设置超时
+  	curl_setopt($ch, CURLOPT_URL, $url);
+  	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER,FALSE);
+  	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST,FALSE);
+  	curl_setopt($ch, CURLOPT_HEADER, FALSE);
+  	curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+  	$res = curl_exec($ch);//运行curl，结果以jason形式返回
+  	$data = json_decode($res,true);
+  	curl_close($ch);
+  	return $data;
+  }
+  /**
+   * 构造获取code的url连接
+   * @param string $redirectUrl 微信服务器回跳的url，需要url编码
+   * @return 返回构造好的url
+   */
+  private function __CreateOauthUrlForCode($redirectUrl)
+  {
+  	$urlObj["appid"] = "wx9a1f0bef4dbb9da0";
+  	//$urlObj["appid"] = $this->weixin_config['appid'];
+  	$urlObj["redirect_uri"] = "$redirectUrl";
+  	$urlObj["response_type"] = "code";
+  	$urlObj["scope"] = "snsapi_base";
+  	//$urlObj["scope"] = "snsapi_userinfo";
+  	$urlObj["state"] = "STATE"."#wechat_redirect";
+  	$bizString = $this->ToUrlParams($urlObj);
+  	return "https://open.weixin.qq.com/connect/oauth2/authorize?".$bizString;
+  }
+  /**
+   * 构造获取open和access_toke的url地址
+   * @param string $code，微信跳转带回的code
+   * @return 请求的url
+   */
+  private function __CreateOauthUrlForOpenid($code)
+  {
+  	$urlObj["appid"] = "wx9a1f0bef4dbb9da0";
+  	$urlObj["secret"] = "";
+  	//$urlObj["appid"] = $this->weixin_config['appid'];
+  	//$urlObj["secret"] = $this->weixin_config['appsecret'];
+  	$urlObj["code"] = $code;
+  	$urlObj["grant_type"] = "authorization_code";
+  	$bizString = $this->ToUrlParams($urlObj);
+  	return "https://api.weixin.qq.com/sns/oauth2/access_token?".$bizString;
+  }
+  /**
+   *
+   * 拼接签名字符串
+   * @param array $urlObj
+   *
+   * @return 返回已经拼接好的字符串
+   */
+  private function ToUrlParams($urlObj)
+  {
+  	$buff = "";
+  	foreach ($urlObj as $k => $v)
+  	{
+  		if($k != "sign"){
+  			$buff .= $k . "=" . $v . "&";
+  		}
+  	}
+  	$buff = trim($buff, "&");
+  	return $buff;
+  }
+  /////////////////////////////////获取openid结束
+  
+  
 }
