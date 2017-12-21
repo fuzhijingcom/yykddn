@@ -107,6 +107,10 @@ class Index extends MobileBase {
             $send_role = I('send_role');
             
             $content = I('content');
+            if ($content == '' || $content == NULL){
+            	$this->error('不能发送空消息');
+            	exit;
+            }
             $return = $this->msg($receive,$send,$send_role,$content,$order_id);
             $obj = json_decode($return);
             
@@ -158,6 +162,10 @@ class Index extends MobileBase {
             $send_role = I('send_role');
            
             $content = I('content');
+            if ($content == '' || $content == NULL){
+            	$this->error('不能发送空消息');
+            	exit;
+            }
             $return = $this->msg($receive,$send,$send_role,$content,$order_id);
             $obj = json_decode($return);
             
@@ -232,7 +240,6 @@ class Index extends MobileBase {
            
             $openid = M('users') ->where('user_id',$receive)->getField('openid');
             
-            
             $access_token = access_token();
             
             $url ="https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token={$access_token}";
@@ -246,10 +253,7 @@ class Index extends MobileBase {
             
             header("Content-type: text/html; charset=utf-8");
            
-            
-            
             $json = json_encode($json,JSON_UNESCAPED_UNICODE);
-            
           
             $ch=curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
