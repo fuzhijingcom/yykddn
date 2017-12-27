@@ -205,6 +205,32 @@ class Index extends MobileBase {
         $yuangong_model->add($data);
     }
  
+    public function most(){
+    	$condition['user_id'] = array('not in','1,9687');
+    	$condition['pay_status'] = array('eq',1);
+    	$condition['order_status'] = array('neq',3);
+    	$list = M('kd_order')->where($condition)->field('user_id,sum(order_amount) as o')->order('sum(order_amount) desc')->limit(20)->group('user_id')->select();
+    	
+    	$this->assign('list',$list);
+    	return $this->fetch();
+    }
+    
+    public function detail(){
+    	$user_id = I('user_id');
+    	
+    	$condition['user_id'] = $user_id;
+    	$list = M('user_address')->where($condition)->select();
+    	
+    	$con['pay_status'] = array('eq',1);
+    	$con['order_status'] = array('neq',3);
+    	
+    	
+    	$order_list = M('kd_order')->where($condition)->where($con)->select();
+    	$this->assign('order_list',$order_list);
+    	
+    	$this->assign('list',$list);
+    	return $this->fetch();
+    }
     
     public function ajaxGetMore(){
     	$p = I('p/d',1);
