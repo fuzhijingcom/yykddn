@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>驿源充电宝</title>
+    <link rel="stylesheet" href="__PUBLIC__/css/weui.min.css"/>
+    <script  type="text/javascript" src="http://www.yykddn.com/public/js/jquery-1.8.2.min.js"></script>
+
+</head>
+<body>
+    <div id="container" class="container"><div class="zh_CN"><div class="weui-msg">
+   <div class="weui-msg__icon-area">
+       <!--  <i class="weui-icon-success weui-icon_msg"></i> -->
+       <img src="__PUBLIC__/share/powerbank.jpg" width="80%" />
+    </div>
+    <div class="weui-msg__text-area">
+        <p class="weui-msg__desc">扫描充电宝上的二维码</p>
+    </div>
+    <div class="weui-msg__opr-area">
+    	<p class="weui-btn-area" id="divnone">
+            <a class="weui-btn weui-btn_default">正在搜索身边充电宝 <i class="weui-loading"></i></a>
+        </p>
+        <p class="weui-btn-area" id="divid" style="display:none;">
+            <a id="scanQRCode" class="weui-btn weui-btn_primary">开始扫码</a>
+        </p>
+    </div>
+    
+    <input type="hidden" id="id_securityCode_input">
+    
+<script type='text/javascript'>
+setTimeout('test()',5000);  
+function test(){  
+ $("#divid").show();
+ $("#divnone").hide();
+} 
+</script>
+    
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="__PUBLIC__/js/global.js"></script>
+<script type="text/javascript">
+
+var ShareLink = "http://{$_SERVER[HTTP_HOST]}/share/powerbank"; //默认分享链接
+var ShareImgUrl = "http://www.yykddn.com/public/images/newLogo.png"; //分享图标
+
+
+$(function() {
+	if(isWeiXin() ){
+		$.ajax({
+			type : "POST",
+			url:"/index.php?m=Mobile&c=Index&a=ajaxGetWxConfig&t="+Math.random(),
+			data:{'askUrl':encodeURIComponent(location.href.split('#')[0])},		
+			dataType:'JSON',
+			success: function(res)
+			{
+				//微信配置
+				wx.config({
+				    debug: false, 
+				    appId: res.appId,
+				    timestamp: res.timestamp, 
+				    nonceStr: res.nonceStr, 
+				    signature: res.signature,
+				    jsApiList: ['scanQRCode','onMenuShareTimeline', 'onMenuShareAppMessage','onMenuShareQQ','onMenuShareQZone','hideOptionMenu'] // 功能列表，我们要使用JS-SDK的什么功能
+				});
+			},
+			error:function(){
+				return false;
+			}
+		}); 
+
+		// config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在 页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready 函数中。
+		wx.ready(function(){
+		    // 获取"分享到朋友圈"按钮点击状态及自定义分享内容接口
+		    wx.onMenuShareTimeline({
+		        title: "驿源充电宝", // 分享标题
+		        link:ShareLink,
+		        imgUrl:ShareImgUrl // 分享图标
+		    });
+
+		    // 获取"分享给朋友"按钮点击状态及自定义分享内容接口
+		    wx.onMenuShareAppMessage({
+		        title: "驿源充电宝", // 分享标题
+		        desc: "驿源商城，正品保证，微信专享。", // 分享描述
+		        link:ShareLink,
+		        imgUrl:ShareImgUrl // 分享图标
+		    });
+			// 分享到QQ
+			wx.onMenuShareQQ({
+		        title: "驿源充电宝", // 分享标题
+		        desc: "驿源商城，正品保证，微信专享。", // 分享描述
+		        link:ShareLink,
+		        imgUrl:ShareImgUrl // 分享图标
+			});	
+			// 分享到QQ空间
+			wx.onMenuShareQZone({
+		        title: "驿源充电宝", // 分享标题
+		        desc: "驿源商城，正品保证，微信专享。", // 分享描述
+		        link:ShareLink,
+		        imgUrl:ShareImgUrl // 分享图标
+			});
+
+			/* wx.scanQRCode({
+                // 默认为0，扫描结果由微信处理，1则直接返回扫描结果
+                needResult : 1,
+                desc : 'scanQRCode desc',
+                success : function(res) {
+                    //扫码后获取结果参数赋值给Input
+                    var url = res.resultStr;
+                    //商品条形码，取","后面的
+                    if(url.indexOf(",")>=0){
+                        var tempArray = url.split(',');
+                        var tempNum = tempArray[1];
+                        $("#id_securityCode_input").val(tempNum);
+                    }else{
+                        $("#id_securityCode_input").val(url);
+                    }
+                },
+                error:function(){
+                	alert('接口错误');
+    				return false;
+    			}
+            }); */
+			
+			
+		  	
+		});
+	}
+});
+
+function isWeiXin(){
+    var ua = window.navigator.userAgent.toLowerCase();
+    if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+        return true;
+    }else{
+        return false;
+    }
+}
+</script>
+
+
+<script>
+
+$("#scanQRCode").click(function() {
+
+            wx.scanQRCode({
+                // 默认为0，扫描结果由微信处理，1则直接返回扫描结果
+                needResult : 1,
+                desc : 'scanQRCode desc',
+                success : function(res) {
+                    //扫码后获取结果参数赋值给Input
+                    var url = res.resultStr;
+                    //商品条形码，取","后面的
+                    if(url.indexOf(",")>=0){
+                        var tempArray = url.split(',');
+                        var tempNum = tempArray[1];
+                        $("#id_securityCode_input").val(tempNum);
+                    }else{
+                        $("#id_securityCode_input").val(url);
+                        window.location.href = url;
+                    }
+                },
+                error:function(){
+                	alert('555');
+    				return false;
+    			}
+            });
+            
+ });
+
+</script>
+
+<script type="text/javascript">
+
+$(function(){
+	if(isWeiXin()){
+		var subscribe = getCookie('subscribe'); // 是否已经关注了微信公众号		
+		if(subscribe == 0)
+			$('.guide').show();
+	}else{
+		$('.guide').hide();
+	}
+})
+ 
+</script> 
+
+
+</div></div></div>
+
+</body></html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>确认租借信息</title>
+    <link rel="stylesheet" href="__PUBLIC__/css/weui.min.css"/>
+</head>
+<body>
+    <div id="container" class="container"><div class="zh_CN"><div class="weui-msg">
+   <!--  <div class="weui-msg__icon-area">
+        <i class="weui-icon-success weui-icon_msg"></i>
+    </div> -->
+     <div class="weui-msg__text-area">
+        <h2 class="weui-msg__title">充电宝租借服务  - 驿源便利店提供</h2>
+        <p class="weui-msg__desc"></p>
+    </div>
+    
+    
+    <form method="post" action="{:U('xiadan_add')}">
+    <div class="weui-msg__text-area">
+        <h2 class="weui-msg__title">欢迎你：{$user.nickname}</h2>
+        <p class="weui-msg__desc">费用：1元/1次</p>
+    </div>
+    <input name="sushe" value="{$address.sushe}" type="hidden" />
+    <input name="address_id" value="{$address.address_id}" type="hidden" />
+    <input name="user_note" value="{$code}" type="hidden" />
+    
+    <div class="weui-msg__opr-area">
+        <p class="weui-btn-area">
+            <button type="submit" class="weui-btn weui-btn_primary">去支付订单</button>
+        </p>
+    </div>
+    </form>
+</div></div></div>
+
+</body></html>

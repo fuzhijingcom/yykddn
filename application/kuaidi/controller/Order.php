@@ -35,7 +35,9 @@ class Order extends MobileBase {
             exit;
         }
        
-       
+        if($order_info['type']=='cdb'){
+        	$this->redirect('share/powerbank/detail', array('order_id' => $id), 1, '支付成功...');
+        }
         
         $region_list = get_region_list();
         $invoice_no = M('DeliveryDoc')->where("order_id", $id)->getField('invoice_no', true);

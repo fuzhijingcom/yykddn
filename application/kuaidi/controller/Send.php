@@ -9,6 +9,11 @@ class Send extends MobileBase {
         $order_id = I('order_id');
         $order = M('kd_order')->where("order_id", $order_id)->find();
         if($order['pay_status']==1){
+        	
+        	if($order['type']=='cdb'){
+        		$this->redirect('share/powerbank/detail', array('order_id' => $order_id), 1, '支付成功...');
+        	}
+        	
            $this->redirect('chenggong', array('order_id' => $order_id), 1, '支付成功...');
         }
         
