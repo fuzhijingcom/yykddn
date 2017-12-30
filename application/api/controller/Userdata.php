@@ -22,6 +22,19 @@ class Userdata extends Controller {
         //$this->public_assign();
     }
     
+    public function getuser(){
+        $mobile = I('mobile');
+        
+        
+       $user_id = M('user_address')->where('mobile',$mobile)->getField('user_id');
+        $user =  M('users')->where(array('user_id'=>$user_id))->find();
+        
+        return  json_encode($user,true);
+        
+    }
+    
+    
+    
     public function getSushe(){
         $key = I('key');
         $msgid = I('msgid');

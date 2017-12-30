@@ -4,7 +4,11 @@ use think\Controller;
 use think\Session;
 
 class Menu extends Controller {
-    
+	/* {
+		"type":"view",
+		"name":"香港代购化妆品",
+		"url":"http://www.yykddn.com/index.php/mobile/Goods/goodsList/id/855.html"
+	} */
     
     public function create(){
         $access_token = access_token();
@@ -38,8 +42,8 @@ class Menu extends Controller {
 	           },
                 {
 				"type":"view",
-				"name":"香港代购化妆品",
-				"url":"http://www.yykddn.com/index.php/mobile/Goods/goodsList/id/855.html"   
+				"name":"申请校园合伙人",
+				"url":"http://www.yykddn.com/jiameng"   
 	           }
 	           
 	           ]
@@ -101,8 +105,8 @@ class Menu extends Controller {
               
 	           {
 				"type":"view",
-				"name":"【驿源说】订阅号",
-				"url":"http://yudw.com/s/?i=w"   
+				"name":"驿源充电宝",
+				"url":"http://www.yykddn.com/share/powerbank/scan"   
 	           },
                
               
