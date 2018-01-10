@@ -628,8 +628,8 @@ class UsersLogic extends Model
             return array('status'=>-1,'msg'=>'收货人不能为空','result'=>'');
         if(!$post['province'] || !$post['city'] || !$post['district'])
             return array('status'=>-1,'msg'=>'所在地区不能为空','result'=>'');
-        if(!$post['address'])
-            return array('status'=>-1,'msg'=>'地址不能为空','result'=>'');
+        //if(!$post['address'])
+           // return array('status'=>-1,'msg'=>'地址不能为空','result'=>'');
         if(!check_mobile($post['mobile']))
             return array('status'=>-1,'msg'=>'手机号码格式有误','result'=>'');
 

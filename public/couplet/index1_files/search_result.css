@@ -1,0 +1,144 @@
+.i_wrap{
+    padding-top:0
+}
+#search-head{
+    background: #eee;
+    width: 100%;
+    border-bottom: 1px solid #dbdbdb;
+}
+#search-box{
+    padding: 5px 75px 5px 80px;
+
+}
+#tb_search2{
+    height: 34px;
+    width: 100%;
+    border-radius: 0;
+    font-size: 16px;
+    border: 1px solid #c2c4c9;
+    -webkit-appearance: none;
+    padding: 0 8px 0 18px;
+    background: #fff url(../images/search-icon.png ) no-repeat 5px center;
+    background-size: 13px 13px;
+}
+#search-content{
+   padding-left:6px;
+   padding-right:6px;
+  margin-bottom: 15px;
+  margin-top: 10px;
+}
+#search_button{
+    padding: 6px 12px;
+    top:5px;
+}
+
+
+
+.mainIndex{ padding: 0px 5px;}
+.keyword{ padding: 5px 0px; overflow: auto}
+.keyword li{ float: left; width: 25%; text-align: center; margin-top: 10px; height: 40px; line-height: 40px; }
+.keyword li a{ background: #fff; display: block; margin:0px 5px;border-radius: 2px; }
+
+
+.hd_tle img{ width: 60px; vertical-align: top; margin-top: 10px;}
+.sanjiao{top:-4px; left: 32px; display: block; width: 0px; height: 0px;border-left:4px solid transparent;border-right:4px solid transparent;border-bottom:4px solid #444444;}
+
+.sortList{ padding: 0px 5px; overflow: auto; }
+.shopList{ overflow: auto; padding: 0px 2px; }
+.sortList h2,.shopList h2{ height: 25px; line-height: 30px; font-size: 14px; margin-top: 10px;}
+
+.sort{ position: relative; overflow:hidden; background: #fff; padding: 10px 10px 10px 70px;margin-top: 10px;}
+.sort em{ position: absolute; left: 0px; top: 0px; width:70px; height: 91px; text-align:center;color: #d93229;}
+.sort em a{color: #991010; display: block; height: 20px; line-height: 20px; padding-top: 50px;}
+.sort em a.icon0{background: url(../images/hot-sucai.png) no-repeat center 15px;background-size: 34px; }
+/*.sort em a.icon1{background: url(../images/course.png) no-repeat center 15px;background-size: 34px;}*/
+.sort em a.icon1{background: url(../images/sheji.png) no-repeat center 15px;background-size: 34px;}
+.sort em a.icon2{background: url(../images/taobao.png) no-repeat center 15px;background-size: 34px;}
+.sort em a.icon3{background: url(../images/ppt.png) no-repeat center 15px;background-size: 34px;}
+.sort em a.icon4{background: url(../images/vidio.png) no-repeat center 15px;background-size: 34px;}
+.sort em a.icon5{background: url(../images/zshi.png) no-repeat center 15px;background-size: 34px;}
+.sort em a.icon6{background: url(../images/sheying.png) no-repeat center 15px;background-size: 34px;}
+.sort em a.icon7{background: url(../images/menu.png) no-repeat center 15px;background-size: 34px;}
+.sort em a.icon8{background: url(../images/gardens.png) no-repeat center 15px;background-size: 34px;}
+.sort ul{overflow: auto; border-left: #ccc solid 1px; padding-left: 10px; overflow: hidden; height:auto;}
+.sort ul li:nth-child(4){ border-bottom:transparent;}
+.sort ul li:nth-child(5){ border-bottom:transparent;}
+.sort ul li:nth-child(6){ border-bottom:transparent;}
+.sortContent li{ float: left; height: 35px;line-height: 35px; width: 25%;border-bottom: #ccc solid 1px;}
+
+.sortContent li a{ display: block;  }
+
+
+.shopList li{ overflow: hidden; background: #fff; padding: 15px; height: 75px; line-height:60px; padding-bottom: 0px;}
+.shopList li a{ display: block; border-bottom: #eaeaea solid 1px; height: 74px;}
+.shopList li img{ float: left; width: 60px; height: 60px; border-radius: 30px; margin-right: 15px;}
+
+#search-index{
+	padding: 5px 10px 5px 45px;
+	position:relative;
+}
+.positions{ display:inline-block; position:absolute; right:15px; top:13px;color:#ccc; font-szie:13px;}
+#search-headindex{ background: #fff; margin:15px 10px 0px 10px;}
+#sort-index{left: 0px; top: 0px; width: 60px; height: 44px; line-height: 44px; border-right:#eaeaea solid 1px; color: #707070; text-align: left; padding-left: 25px; z-index: 2}
+#search-headindex em.down:before{ width: 6px; height: 6px; display: block;  border-top: #828282 solid 1px; border-right: #828282 solid 1px; content: ''; position: absolute; top: 16px; left: 65px; z-index:0; -webkit-transform:rotate(135deg);transform:rotate(135deg);}
+#search-headindex span.list{ left: 0px; top: 48px; width: 95px;  color: #fff; height: 91px; background: #444444; z-index: 2 }
+#search-headindex span.list em{ display: block; height: 45px; line-height: 45px; border-bottom: #5d5d5d solid 1px; padding-left: 22px; }
+#search-headindex span.list em#item{ background: url(../images/search_item.png ) no-repeat 22px 13px;background-size: 18px; }
+#search-headindex span.list em#shop{ background: url(../images/search_shop.png ) no-repeat 22px 11px;background-size: 18px;}
+#index_search2{
+	height: 34px; 
+	width: 90%;
+	border-radius: 0;
+	font-size: 16px;
+	border: none;
+	-webkit-appearance: none; font-weight: normal;; font-size: 14px; color: #707070;
+
+}
+.searchbg{ background: url(../images/serch.png ) no-repeat center 16px;  background-size: 14px; display: block; width: 20px; height: 40px; position: absolute; left: 20px;}
+.index_button{right: 12px; font-size: 14px; text-align: center; line-height: 22px;}
+
+
+.plaza_r_i{
+    width:100%;
+    height:135px;
+    background-size:100%;
+    background-position:0 center;
+    background-repeat:no-repeat;
+    background-color:#fff;
+}
+.plaza_r_s{
+    width:60px;
+    height:60px;
+    border-radius:30px;
+    background-size:60px;
+    background-position:0 center;
+    background-repeat:no-repeat;
+    background-color:#fff;
+    margin-right:15px;
+}
+
+.nearby{ background-color: #FFFFFF; padding: 0px 12px; margin-top: 10px;margin-bottom: 20px;}
+.nearby a{ display: block; height: 70px; border-bottom: #cccccc solid 1px; padding-top: 5px; position: relative}
+.nearby a.esp{ border: none}
+.nearby a h2{ color: #323232}
+.nearby a p{ color: #707070}
+.nearby a em{ width: 10px; height: 10px; display:block; position: absolute; right: 10px; top: 25px; border-top: #898989 solid 1px; border-right: #898989 solid 1px;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+	-webkit-transform-origin: 0 100%;
+	-moz-transform-origin: 0 100%;
+	-ms-transform-origin: 0 100%;
+	-o-transform-origin: 0 100%;
+	transform-origin: 0 100%;
+}
+
+/*修改*/
+.hides{ display:none; border-bottom:none !important;}
+.click-more{ position:relative; border-bottom:none !important;}
+.click-more a{color:#991010;}
+.click-more:before{content:""; position:absolute; top:15px; right:136px; border:3px solid #991010; border-color:#991010 transparent transparent transparent;}

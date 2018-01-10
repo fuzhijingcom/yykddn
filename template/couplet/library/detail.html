@@ -1,0 +1,1304 @@
+﻿<!DOCTYPE html>
+<html class="js cssanimations">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=3,minimum-scale=1,user-scalable=no">
+    <meta content="telephone=yes" name="format-detection">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>{$info.name}</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="applicable-device" content="mobile">
+    <link rel="stylesheet" href="__PUBLIC__/couplet/detail_files/amazeui.min.css">
+    <script src="__PUBLIC__/couplet/detail_files/hm.js"></script>
+    <script>var _hmt = _hmt || [];</script>
+    <link rel="stylesheet" href="__PUBLIC__/couplet/detail_files/app.css">
+    <style type="text/css">
+        body {
+            /* padding-bottom: 50px; */
+        }
+
+        a:hover {
+            color: #333;
+        }
+
+        .c-666 {
+            color: #666;
+        }
+
+        .c-text-333 {
+            color: #333;
+        }
+
+        .am-modal-dialog {
+            background: #fff;
+        }
+
+        .soso {
+            width: 73%;
+            height: 35px;
+            padding-left: 10px;
+            border: 1px solid #ccc;
+            border-right: none;
+            -webkit-border-top-left-radius: 4px;
+            -webkit-border-top-right-radius: 0;
+            -webkit-border-bottom-left-radius: 4px;
+            -webkit-border-bottom-right-radius: 0;
+            overflow: hidden;
+            display: inline-block;
+            position: relative;
+            left: 2px;
+            top: 11px;
+            font-size: 13px;
+        }
+
+        .g-good-header .header-search-input {
+            display: none;
+            width: 80%;
+            float: left;
+            position: relative;
+        }
+
+        .g-good-header .header-search-input input {
+            float: left;
+            width: 80%;
+            height: 30px;
+            background: #fff;
+            color: #666;
+            padding-left: 30px;
+            padding-right: 30px;
+            border: none;
+            cursor: pointer;
+            -webkit-appearance: none;
+            border-radius: 3px;
+            font: 13.3333px Arial;
+        }
+
+        .g-good-header .header-search-input input[type="search"] {
+            color: #333;
+            border-radius: 3px;
+            -webkit-appearance: none;
+        }
+
+        .g-good-header .header-search-input {
+            position: relative;
+        }
+
+        .g-good-header .header-search-gray {
+            display: inline-block;
+            position: absolute;
+            top: 18px;
+            margin-left: 8px;
+            z-index: 999;
+            width: 20px;
+            height: 20px;
+            left: 0;
+            background: url('http://static.redocn.com/usercenter/m/images/serch.png') no-repeat;
+            background-size: 15px;
+        }
+
+        .g-good-header .header-search-gray input {
+            color: #eee;
+        }
+
+        .g-good-header .header-search-btn {
+            float: left;
+            width: 20%;
+            color: #fff;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .coll-add .am-header-ico4-hover {
+            position: relative;
+            left: 28px;
+            display: inline-block;
+            float: left;
+            width: 26px;
+            height: 37px;
+            background: url(http://static.redocn.com/usercenter/m/mizui/images/icon-shoucang-yes.png) no-repeat 0px 14px;
+            background-size: 22px;
+        }
+
+        .g-modal-wrap .m-coll-list {
+            padding: 5px;
+        }
+
+        .g-modal-wrap .m-coll-list .m-coll-pic {
+            overflow: hidden;
+            height: 90px;
+        }
+
+        .g-modal-wrap ul li {
+            width: 33.333%;
+            height: 120px;
+            float: left;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .g-modal-wrap ul li.u-creat-cate {
+            line-height: 80px;
+            background: #e7e7e7;
+            border-bottom: 35px solid #fff;
+            border-top: 5px solid #fff;
+        }
+
+        .g-modal-wrap ul a {
+            display: block;
+        }
+
+        .g-modal-wrap ul img {
+            width: auto;
+            height: 100%;
+            text-align: center;
+        }
+
+
+        .g-modal-wrap .m-coll-list {
+            padding: 5px;
+        }
+
+        .g-modal-wrap .m-coll-list .m-coll-pic {
+            overflow: hidden;
+            height: 90px;
+        }
+
+        .g-modal-wrap ul li {
+            width: 33.333%;
+            height: 120px;
+            float: left;
+            padding: 5px;
+            text-align: center;
+        }
+
+        .g-modal-wrap ul li.u-creat-cate {
+            line-height: 80px;
+            background: #e7e7e7;
+            border-bottom: 35px solid #fff;
+            border-top: 5px solid #fff;
+        }
+
+        .g-modal-wrap ul a {
+            display: block;
+        }
+
+        .g-modal-wrap ul img {
+            width: auto;
+            height: 100%;
+            text-align: center;
+        }
+
+        .share-ico1 {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            display: inline-block;
+            cursor: pointer;
+            width: 26px;
+            height: 37px;
+            background: url(http://static.redocn.com/usercenter/m/mizui/images/icon-share1.png) no-repeat;
+            background-size: 22px;
+        }
+
+        .g-good-header {
+            color: #fff;
+        }
+
+        .g-good-header .toso-link {
+            display: inline-block;
+            width: 25px;
+            height: 34px;
+            position: absolute;
+            right: 50px;
+            top: 14px;
+            background: url('http://static.redocn.com/usercenter/m/mizui/images/header-list-ico.png') no-repeat;
+            background-position: 0px -89px;
+            background-size: 25px;
+        }
+
+        .g-good-header .good-user-link {
+            display: inline-block;
+            width: 25px;
+            height: 34px;
+            position: absolute;
+            right: 10px;
+            top: 14px;
+            background: url(http://static.redocn.com/usercenter/m/mizui/images/geren.png) no-repeat;
+            background-size: 22px 24px
+        }
+
+        .g-good-header a.u-logo {
+            display: inline-block;
+            width: 189px;
+            height: 32px;
+            margin-top: 8px;
+            /* background: url('__PUBLIC__/couplet/logo.jpg') no-repeat 0px 0px; */
+            background-size: 189px 32px;
+        }
+
+        .g-good-header .logo_title {
+            padding-left: 0.3rem;
+        }
+
+        .g-good-con {
+            position: relative;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        .g-good-con .m-good-pic {
+            /* background: #f7f7f7 url('http://static.redocn.com/usercenter/m/images/logobg.png') no-repeat center 50px; */
+            min-height: 200px;
+        }
+
+        .g-good-con dl {
+            margin-bottom: 6px;
+        }
+
+        .g-good-con dl dt {
+            font-weight: normal;
+        }
+
+        .g-good-con dl dd,
+        .g-good-con p {
+            margin: 0;
+            padding: 0;
+        }
+
+        .g-good-con .m-good-con1 p {
+            text-align: left;
+            padding: 10px 1rem 0px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .g-good-con .m-good-con2 {
+            color: #333;
+            text-align: left;
+            padding: 0px 1rem;
+        }
+
+        .g-good-con .m-good-con2 dl dt {
+            position: relative;
+            right: 1px;
+            color: #666;
+            font-size: 12px;
+        }
+
+        .g-good-con .m-good-con2 dl dt span {
+            font-size: 14px;
+        }
+
+        .g-good-con .m-good-con2 dl b {
+            color: #ea2a2a;
+        }
+
+        .g-good-con dl dd {
+            margin-bottom: 4px;
+        }
+
+        .g-good-con .m-good-con2 dl bt {
+            position: relative;
+            font-size: 16px;
+            color: #ea2a2a;
+            font-weight: normal;
+        }
+
+        .g-good-con .m-good-con2 dd {
+            position: relative;
+            bottom: 5px;
+        }
+
+        .g-good-con .m-nav-func {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .g-good-con .m-nav-func a.u-btn-back {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 0, 0, .5);
+            border-radius: 50%;
+        }
+
+        .g-good-con .m-nav-func a.u-btn-back::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-top: -8px;
+            margin-left: -5px;
+            width: 15px;
+            height: 15px;
+            border-bottom: 3px solid #fff;
+            border-right: 3px solid #fff;
+            -webkit-transform: rotate(135deg);
+        }
+
+        .g-good-con .m-nav-func a.u-btn-pull {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 0, 0, .5);
+            border-radius: 50%;
+        }
+
+        .g-good-con .m-nav-func a.u-btn-pull:before {
+            content: "";
+            position: absolute;
+            top: 12px;
+            left: 10px;
+            width: 22px;
+            height: 20px;
+            background: url(http://static.redocn.com/usercenter/m/mizui/images/img_2.png) no-repeat;
+            background-size: 20px 24px;
+        }
+
+        .g-good-con .m-pull-list1 {
+            position: absolute;
+            right: 0px;
+            top: 59px
+        }
+
+        .m-good-pic p {
+            font-size: 14px;
+            color: #333;
+            position: relative;
+            top: 5px;
+        }
+
+        .m-pic-cons a:hover {
+            color: #333;
+        }
+
+        .m-pic-cons p {
+            padding-left: 10px;
+            padding-top: 7px;
+        }
+
+        .g-footer-fixed {
+            /*position: fixed;bottom:0px;*/
+            width: 100%;
+            overflow: hidden;
+            text-align: center;
+            z-index: 999;
+        }
+
+        .g-footer-fixed .am-g-collapse .am-u-sm-3,
+        .g-footer-fixed .am-g-collapse .am-u-sm-4 {
+            padding: 4px 0;
+            background: #991010;
+        }
+
+        .g-footer-fixed .am-g-collapse .am-u-sm-3.down_box {
+            width: 23%;
+        }
+
+        .g-footer-fixed .am-g-collapse .am-u-sm-3.gaitu_box {
+            width: 27%;
+        }
+
+        .g-footer-fixed .am-g-collapse .order_box {
+            background: #41c42d;
+        }
+
+        .g-footer-fixed a {
+            display: block;
+            height: 40px;
+            color: #fff;
+        }
+
+        .g-footer-fixed a.u-coll-btn {
+            background: #991010 url(http://static.redocn.com/usercenter/m/mizui/images/icon-shoucang-no-new.png) no-repeat center;
+            background-size: 90%;
+        }
+
+        .g-footer-fixed a.u-coll-btn::after {
+            content: '';
+            width: 1px;
+            height: 40px;
+            position: absolute;
+            top: 5px;
+            right: 0;
+            border-right: 1px solid #cc8888;
+            -webkit-transform: scaleX(0.5);
+            transform: scaleX(0.5);
+            -webkit-transform-origin: top right;
+        }
+
+        .g-footer-fixed a.u-coll-btn2 {
+            background: #991010 url(http://static.redocn.com/usercenter/m/mizui/images/icon-shoucang-yes-new.png) no-repeat center;
+            background-size: 90%;
+        }
+
+        .g-footer-fixed a.u-coll-btn2::after {
+            content: '';
+            width: 1px;
+            height: 40px;
+            position: absolute;
+            top: 5px;
+            right: 0;
+            border-right: 1px solid #cc8888;
+            -webkit-transform: scaleX(0.5);
+            transform: scaleX(0.5);
+            -webkit-transform-origin: top right;
+        }
+
+        .g-footer-fixed a.u-down-btn {
+            background: #991010 url(http://static.redocn.com/usercenter/m/mizui/images/icon-down-new.png) no-repeat center;
+            background-size: 98%;
+        }
+
+        .g-footer-fixed a.u-down-btn::after {
+            content: '';
+            width: 1px;
+            height: 40px;
+            position: absolute;
+            top: 5px;
+            right: 0;
+            border-right: 1px solid #cc8888;
+            -webkit-transform: scaleX(0.5);
+            transform: scaleX(0.5);
+            -webkit-transform-origin: top right;
+        }
+
+        .g-footer-fixed a#gaitu-btn {
+            background: #991010 url(http://static.redocn.com/usercenter/m/mizui/images/icon-gaitu-new.png) no-repeat center;
+            background-size: 80%;
+        }
+
+        .g-footer-fixed a.order-btn {
+            background: #41c42d url(http://static.redocn.com/usercenter/m/mizui/images/icon-design.png) no-repeat center;
+            background-size: 90%;
+        }
+
+        .g-footer-fixed2 a.u-coll-btn {
+            background: #991010 url(http://static.redocn.com/usercenter/m/mizui/images/icon-shoucang-no-new.png) no-repeat center;
+            background-size: 80%;
+        }
+
+        .g-footer-fixed2 a.u-coll-btn2 {
+            background: #991010 url(http://static.redocn.com/usercenter/m/mizui/images/icon-shoucang-yes-new.png) no-repeat center;
+            background-size: 80%;
+        }
+
+        .g-footer-fixed2 a.u-down-btn {
+            background: #991010 url(http://static.redocn.com/usercenter/m/mizui/images/icon-down-new.png) no-repeat center;
+            background-size: 80%;
+        }
+
+        .g-footer-fixed2 a.order-btn {
+            background: #41c42d url(http://static.redocn.com/usercenter/m/mizui/images/icon-design.png) no-repeat center;
+            background-size: 80%;
+        }
+
+
+
+        .g-footer-fixed,
+        .ad-list {
+            z-index: 999;
+        }
+
+        .g-good-other h2 {
+            padding: 25px 0px 0px;
+        }
+
+        .g-good-other ul {
+            position: relative;
+            margin-left: -8px;
+        }
+
+        /*.g-footer{margin-bottom: 130px}*/
+
+        .masonry {
+            top: 16px;
+        }
+
+        .g-good-other ul li {
+            float: left;
+            overflow: hidden;
+            width: 31%;
+            margin-left: 8px;
+            background: #fff;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .g-good-other ul li p {
+            background: #fff;
+        }
+
+        .g-good-other ul p {
+            height: 22px;
+            line-height: 22px;
+            font-size: 12px;
+            white-space: normal;
+            overflow: hidden;
+        }
+
+        .m-coll-list {
+            overflow: hidden;
+        }
+
+        /*iphone5分辨率*/
+
+        @media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
+            .g-good-other ul li {
+                float: left;
+                overflow: hidden;
+                width: 30.5%;
+                margin-left: 8px;
+                background: #fff;
+                text-align: center;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+        }
+
+        /*iphone6分辨率*/
+
+        @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+            .g-good-other ul li {
+                float: left;
+                overflow: hidden;
+                width: 31%;
+                margin-left: 8px;
+                background: #fff;
+                text-align: center;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+        }
+
+      
+
+        /*登陆*/
+
+        .errorMsg {
+            display: none;
+        }
+
+        #doc-vld-name-2 {}
+
+        .u-border-red {
+            border-bottom: 1px solid red;
+        }
+
+        .u-border-gray {
+            border-bottom: 1px solid #eee;
+        }
+
+        .am-input-group-label {
+            border: none;
+        }
+
+        .am-form input[type='text'],
+        .am-form input[type='password'] {
+            border: none;
+        }
+
+        .am-form select:focus,
+        .am-form textarea:focus,
+        .am-form input[type=text]:focus,
+        .am-form input[type=password]:focus,
+        .am-form input[type=datetime]:focus,
+        .am-form input[type=datetime-local]:focus,
+        .am-form input[type=date]:focus,
+        .am-form input[type=month]:focus,
+        .am-form input[type=time]:focus,
+        .am-form input[type=week]:focus,
+        .am-form input[type=number]:focus,
+        .am-form input[type=email]:focus,
+        .am-form input[type=url]:focus,
+        .am-form input[type=search]:focus,
+        .am-form input[type=tel]:focus,
+        .am-form input[type=color]:focus,
+        .am-form-field:focus {
+            border-color: normal;
+            box-shadow: none;
+        }
+
+        .g-good-other .am-pureview-slider .am-pinch-zoom:after {
+            display: none;
+        }
+
+        .modal-wrap {
+            position: absolute;
+            display: none;
+            color: #fff;
+            width: 60%;
+            top: 50%;
+            left: 20%;
+            line-height: 40px;
+            background: rgba(0, 0, 0, .7);
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .am-share-sns li:nth-child(5) {
+            display: none !important;
+        }
+
+        .good-btn {
+            position: absolute;
+            right: 10px;
+            width: auto;
+            height: 46px;
+        }
+
+        #account_tip_bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10000;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        #account_tip {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            height: 250px;
+            background: #fff;
+            margin: -125px 0 0 -150px;
+            text-align: center;
+            font-family: "微软雅黑", "microsoft yahei";
+            z-index: 10002;
+        }
+
+        #account_tip .title {
+            height: 45px;
+            line-height: 45px;
+            background: #f9f9f9;
+            border-bottom: 1px solid #efefef;
+            overflow: hidden;
+            zoom: 1;
+        }
+
+        #account_tip .title span {
+            float: left;
+            font-size: 16px;
+            margin-left: 20px;
+            color: #333;
+        }
+
+        #account_tip .title .close_btn {
+            float: right;
+            width: 20px;
+            height: 45px;
+            margin-right: 20px;
+            background: url('http://static.redocn.com/public/images/iconfont-close1.png') no-repeat center;
+        }
+
+        #account_tip .account_tip_content {
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        #account_tip .account_tip_content .noset h3 {
+            margin-top: 10px;
+            height: 34px;
+            line-height: 34px;
+            text-align: center;
+            color: #991010;
+        }
+
+        #account_tip .account_tip_content .noset p {
+            margin-top: 10px;
+            line-height: 24px;
+            text-align: center;
+            color: #333;
+        }
+
+        #account_tip .account_tip_content .noset a {
+            display: block;
+            width: 80px;
+            height: 30px;
+            line-height: 30px;
+            margin: 15px auto;
+            background: #991010;
+            color: #fff;
+            text-align: center;
+        }
+
+        #account_tip .account_tip_content .alset {
+            text-align: left;
+        }
+
+        #account_tip .account_tip_content .alset h3 {
+            margin-top: 5px;
+            height: 24px;
+            line-height: 24px;
+            color: #991010;
+        }
+
+        #account_tip .account_tip_content .alset p {
+            line-height: 24px;
+            color: #333;
+        }
+
+        #account_tip .account_tip_content .alset p span {
+            color: #0012f9;
+        }
+
+        #account_tip .account_tip_content .alset .choose {
+            overflow: hidden;
+            zoom: 1;
+        }
+
+        #account_tip .account_tip_content .alset .choose label {
+            float: left;
+            margin-right: 20px;
+            line-height: 34px;
+        }
+
+        #account_tip .account_tip_content .alset .notice {
+            line-height: 20px;
+            color: #028300;
+            font-size: 12px;
+        }
+    </style>
+    <script src="__PUBLIC__/couplet/detail_files/jquery.min.js" charset="gbk"></script>
+    <script src="__PUBLIC__/couplet/detail_files/amazeui.min.js"></script>
+    <script src="__PUBLIC__/couplet/detail_files/app.js" charset="gbk"></script>
+    <script type="text/javascript" src="__PUBLIC__/couplet/detail_files/jquery.lazyload.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/couplet/detail_files/Masonry.js"></script>
+    <script src="__PUBLIC__/couplet/detail_files/top.js"></script>
+</head>
+
+<body>
+    <!--
+    	作者：58028841@qq.com
+    	时间：2015-08-21
+    	描述：头部模块
+    -->
+    <header data-am-widget="header" class="am-header g-good-header am-no-layout">
+        <div class="am-header-left am-header-nav">
+            <!-- <a href="http://m.redocn.com/" class="u-logo"></a> -->
+            <span class="logo_title am-text-sm pos-top-5">{$info.name}</span>
+        </div>
+        <div class="header-search-input">
+            <span class="header-search-gray"></span>
+            <input type="text" class="soso s" placeholder="请输入搜索关键字">
+            <a href="javascript:void(0)" class="click-search-btn header-search-btn">搜索</a>
+        </div>
+        <a href="javascript:void(0);" class="toso-link"></a>
+        <a href="/couplet/library" class="good-user-link"></a>
+    </header>
+   
+    <script>    	
+        function fade_img(img) {
+            var height = $(img).height();
+            if (height < 200) {
+                $(img).parent(".m-good-pic").addClass("m-small-pic");
+            }
+            $(img).animate({ "opacity": 1 }, 200);
+        }
+    </script>
+    <div class="g-good-con">
+        <div class="m-nav-func">
+            <a href="javascript:;" class="u-btn-back" onclick="window.history.back()"></a>
+            <nav data-am-widget="menu" class="am-menu am-menu-dropdown1 am-no-layout" data-am-menu-collapse="">
+                <a href="javascript: void(0)" class="am-menu-toggle u-btn-pull"></a>
+                <ul class="am-menu-nav am-avg-sm-1 am-collapse am-toggle-list m-pull-list1">
+                    <li class="">
+                        <a href="/couplet/library" class="">
+                            <i class="am-header-ico-1"></i>首页</a>
+                    </li>
+                   
+                    <li class="copy-href">
+                            <a href="" class="">
+                            <i class="am-header-ico-6"></i>复制链接
+                            </a>
+                    </li>
+                    <li class="">
+                        <a href="javascript:;" class="" data-am-modal="{target: &#39;#doc-modal-3&#39;, closeViaDimmer: 0,height: 265}">
+                            <span class="am-header-ico-10"></span>举报</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="m-pic-cons">
+            <div class="m-good-pic am-text-center">
+                <!--非动态预览图-->
+                <a href="__PUBLIC__/couplet/id/{$id}.jpg">
+                    <img src="__PUBLIC__/couplet/id/{$id}.jpg" alt="" style="opacity: 1;" onload="fade_img(this);">
+                </a>
+            </div>
+            <p>
+                <a href="__PUBLIC__/couplet/id/{$id}.jpg">{$info.name}</a>
+            </p>
+        </div>
+        <div class="m-good-con2">
+            <dl>
+                <dt>
+                    <b>
+                        <span>￥</span>{$price}</b> 元</dt>
+                <dd class="c-666 text-10">
+                    <span class="text-10">编号：{$id}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <!-- <span class="text-10">格式：PSD</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="text-10">大小：25.58 M</span> -->
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <!--
+                作者：58028841@qq.com
+                时间：2015-08-21
+                描述：悬浮底部模块
+    -->
+    <footer class="g-footer-fixed">
+        <div class="am-g am-g-collapse">
+            <div class="am-u-sm-3 sc_box">
+                <a class="u-coll-btn" id="shouchang_btn"></a>
+            </div>
+            <div class="am-u-sm-3 down_box">
+                <a href="/couplet/library/download?id={$id}" class="u-down-btn"></a>
+            </div>
+            <div class="am-u-sm-3 gaitu_box">
+                <a href="/couplet/library/edit?id={$id}" id="gaitu-btn"></a>
+            </div>
+            <div class="am-u-sm-3 order_box">
+                <a href="/couplet/library/buy?id={$id}" class="order-btn"></a>
+            </div>
+        </div>
+    </footer>
+   
+    <div class="g-zanwei-wrap"></div>
+    <!--搜藏弹窗-->
+    <style type="text/css">
+        .am-modal {
+            width: 300px !important;
+            margin-left: -150px;
+        }
+
+        .am-login-bg-3,
+        .am-login-bg-2,
+        .am-login-bg-1 {
+            width: 55px;
+            height: 55px;
+        }
+    </style>
+   
+    <div class="am-modal am-modal-no-btn g-modal-wrap" tabindex="-1" id="doc-modal-1">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">添加分类
+                <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close="">×</a>
+            </div>
+            <ul class="m-coll-list" style="height: 541.765px; overflow: auto;">
+                <li>
+                    <div class="m-coll-pic" style="background: #f7f7f7;line-height: 90px;">
+                        <a href="javascript:viod(0);" data-am-modal="{target: &#39;#doc-modal-2&#39;, closeViaDimmer: 0,height:180}"
+                            id="j-close">+创建</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--
+                作者：58028841@qq.com
+                时间：2015-08-24
+                描述：添加分类弹窗
+    -->
+    <div class="am-modal am-modal-no-btn" tabindex="-1" id="doc-modal-2">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">添加分类
+                <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close="">×</a>
+            </div>
+            <div class="am-modal-bd am-margin-top">
+                <label class="am-text-sm">分类名称</label>
+                <input type="text" id="sucai_fav_cat_input" class="am-input ">
+                <span id="sucai_fav_error"></span>
+            </div>
+            <button type="button" id="sucai_fav_cat_addbtn" class="am-btn am-btn-danger am-radius j-cate-yz">添加</button>
+        </div>
+    </div>
+    <!--
+    	作者：58028841@qq.com
+    	时间：2015-08-25
+    	描述：举报弹窗模块
+    -->
+    <div class="am-modal am-modal-no-btn" tabindex="-1" id="doc-modal-3">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">举报
+                <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close="">×</a>
+            </div>
+            <div class="am-modal-bd am-margin-top">
+                <form class="am-form">
+                    <div class="am-form-group am-text-sm">
+                        <textarea class="jubao-reason" id="doc-ta-1" placeholder="请输入举报内容..."></textarea>
+                    </div>
+                    <div class="am-form-group">
+                        <button type="button" class="am-btn am-btn-danger am-btn-block j-jubao-yz">确认提交</button>
+                    </div>
+                </form>
+                <div class="am-text-center am-text-xs">注：举报请说明理由。</div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-wrap"></div>
+    <!--账户安全提示-->
+    <div id="account_tip_bg" style="display:none"></div>
+    <div id="account_tip" style="display:none">
+        <div class="title">
+            <span>账户安全提示</span>
+            <a href="javascript:;" class="close_btn"></a>
+        </div>
+        <div class="account_tip_content">
+            <!--未设置第三方快捷登陆-->
+            <div class="noset">
+                <h3>（账户安全）重要提示：</h3>
+                <p>您的账户存在风险，为了账户的安全，请设置第三方快捷登录！</p>
+                <a href="http://m.redocn.com/jieri_9089185.html###" target="_blank">立即设置</a>
+            </div>
+            <!--已设置第三方快捷登陆-->
+            <div class="alset">
+                <h3>（账户安全）重要提示：</h3>
+                <p>您已绑定“
+                    <span id="msg">QQ账号快捷登陆</span>”，为了您的账户安全，请您开启账号禁用功能</p>
+                <div class="choose">
+                    <label for="open_ban_account">
+                        <input type="radio" name="ban_account" id="open_ban_account" value="1"> 开启
+                    </label>
+                    <label for="close_ban_account">
+                        <input type="radio" name="ban_account" id="close_ban_account" checked="checked" value="0"> 不开启
+                    </label>
+                </div>
+                <div class="notice">（开启账号禁用功能后，将不可再用“用户名+登录密码”方式登录红动，账号更加安全！）</div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="__PUBLIC__/couplet/detail_files/ckplayer.js" charset="utf-8"></script>
+  
+    <script type="text/javascript">        //页面模态窗口调用弹窗口打开modal()和关闭modal('close');如$("触发按钮").click(function(){$("弹窗容器").modal()})即可打开窗口，关闭亦然	
+
+
+        var $tips = $(".modal-wrap");
+        $(window).on("load", function () {
+            var _w = $(window).width() / 3.5;
+            var _h = $(window).height() / 2;
+            var box_h = _w - $("#modal-wrap").width();
+            $("#modal-wrap").css({ "top": _h + 'px', "left": '50%', "margin-left": -_w });
+        });
+
+        function accountSafeTip() {
+            $.ajax({
+                type: "POST",
+                url: "/sucai/getfastlogin",
+                data: { refer: '' },
+                dataType: 'json',
+                success: function (data) {
+                    //                    data =$.parseJSON (data);
+                    if (data.status == 2) {
+                        //                        alert('请先登录');
+                        $('.noset').css('display', 'none');
+                        $('.alset').css('display', 'none');
+                        $('#account_tip_bg').hide();
+                        $('#account_tip').hide();
+                    }
+                    else if (data.status == 1) {
+                        //已设置第三方快捷登陆
+                        $('.noset').css('display', 'none');
+                        $('.alset').css('display', 'block');
+                        $('#msg').html(data.msg + '登录');
+                        $('#account_tip_bg').show();
+                        $('#account_tip').show();
+                    } else if (data.status == 3) {
+                        //未设置第三方快捷登陆
+                        $('.noset').css('display', 'block');
+                        $('.alset').css('display', 'none');
+                        $('#account_tip_bg').show();
+                        $('#account_tip').show();
+                    } else {
+                        $('.noset').css('display', 'none');
+                        $('.alset').css('display', 'none');
+                        $('#account_tip_bg').hide();
+                        $('#account_tip').hide();
+                    }
+                }
+            });
+
+        }
+        $(function () {
+            //关闭账户安全提示框
+            //accountSafeTip();
+            //            alert(123);
+            jQuery("#account_tip").on("click", ".close_btn", function () {
+                jQuery("#account_tip").remove();
+                jQuery("#account_tip_bg").remove();
+            });
+            //选择禁用
+            jQuery("input[name='ban_account']").on("change", function () {
+                var value = $(this).val();
+                jQuery.ajax({
+                    type: "POST",
+                    url: "/sucai/forbiddenpwdlogin",
+                    data: { 'openban': value },
+                    dataType: 'json',
+                    success: function (data) {
+                        //                        data =$.parseJSON (data);
+                        alert('设置成功');
+                    }
+                });
+            });
+
+            $(".toso-link").click(function () {
+                var searchInput = $(".header-search-input");
+                var headerNav = $('.am-header-nav');
+                if (searchInput.is(':hidden')) {
+                    headerNav.hide();
+                    searchInput.show();
+                }
+                else {
+                    headerNav.show();
+                    searchInput.hide();
+                }
+            });
+
+            var h = new searchHistory();
+            $('.click-search-btn').click(function () {
+                var s = $.trim($('.s').val());
+                if (s == '') {
+                    alert('请填写搜索关键词');
+                } else {
+                    h.add(s);
+                    window.location.href = '/couplet/library/search?word=' + keyword;
+                }
+            });
+
+            $(".soso").keydown(function (e) {
+                if (e.keyCode === 13) {
+                    $('.click-search-btn').trigger("click");
+                }
+            });
+
+
+            //          var ua = navigator.userAgent;
+            //       	if(!ua.match(/(iPhone\sOS)\s([\d_]+)/)){
+            //          	$("img").lazyload({ 
+            //              	effect: "fadeIn"
+            //          	});
+            //        	}else{
+            //          	$(".load-img").each(function(){
+            //	                var $_this = $(this).data("original");
+            //	                $(this).attr("src",$_this);
+            //	            });
+            //	        }   
+            $("img.lazy").lazyload({
+                effect: "fadeIn",
+                threshold: 300
+            });
+
+            //线条切换
+            var $input = $(".ins input");
+            $input.focus(function () {
+                var $this = $(this);
+                var parent = $this.parent();
+                parent.addClass("u-border-red").removeClass("u-border-gray");
+                parent.siblings(".ins").removeClass("u-border-red").addClass("u-border-gray");
+            });
+        });
+
+
+        var __h = $(window).height() / 1.7;
+        $(document).on("click", ".am-icon-wechat", function () {
+            $(".am-pureview").hide();
+        });
+        $(document).on("click", ".am-icon-chevron-left", function () {
+            $(".am-share,.am-dimmer").hide();
+        });
+        $(".j-jubao-yz").click(function () {
+            //开始举报
+            var reason = $(".jubao-reason").val();
+            var url = window.location.href;
+            var tid = "9089185";
+            var data = "tid=" + tid + "&reason=" + reason + "&url=" + url;
+            $.post('/jubao', data, function (data) {
+                if (data.status == 0) {
+                    alert(data.msg);
+                } else {
+                    $("#doc-modal-3").modal('close');
+                }
+            }, 'json');
+        });
+        $(window).on({
+            load: function () {
+                imgLocation();
+                //当页面加载完，给预览大图页面添加分享按钮
+                $(".am-pureview-actions").append("<span class=\"share-ico1 j-share\"></span>");
+                $(".am-icon-chevron-left").attr("data-am-share-close", "");
+            },
+            resize: function () {
+                imgLocation();
+            },
+            //当页面滚动的时候重排瀑布流，防止延迟之后页面混乱
+            scroll: function () {
+                imgLocation();
+            }
+        });
+
+        $(".coll-add").click(function () {
+            var $this = $(this).find("i");
+            if ($this.hasClass("am-header-ico4-hover")) {
+                $this.removeClass("am-header-ico4-hover").addClass("am-header-ico-4");
+            } else {
+                $this.removeClass("am-header-ico-4").addClass("am-header-ico4-hover");
+            }
+
+        });
+        $(".m-coll-list").css({ "height": __h, "overflow": 'auto' })
+        /**
+         * 手机端触摸兼容
+         * obj表示绑定对象，click表示pc端click事件，手机端touchstart触摸事件，fn匿名函数
+         * 
+         */
+        function clicks(obj, click, touchstart, fn) {
+            //var $obj = $(obj);
+            var $dom = $(document);
+            if (typeof ontouchstart != "undefined") {
+                $dom.on(touchstart, obj, fn);
+            } else {
+                $dom.on(click, obj, fn);
+            }
+        }
+        //分类验证
+        $(".j-cate-yz").click(function () {
+            var va = $(".am-input").val();
+            (va == '') ? alert("请输入分明名称") : null;
+        });
+        //为瀑布流绑定事件
+        $(window).on({
+            "load": function () {
+                imgLocation();
+                //当页面加载完，给预览大图页面添加分享按钮
+                $(".am-pureview-actions").append("<span class=\"share-ico1 j-share\"></span>");
+                $(".am-icon-chevron-left").attr("data-am-share-close", "");
+            },
+            "resize": function () {
+                imgLocation();
+            }
+        });
+        
+        //弹窗关闭
+        clicks("#j-close", "click", "touchstart", function () {
+            $("#doc-modal-1").modal("close");
+        });
+        /**
+         * 瀑布流
+         * 调用imgLocation()即可
+         * 
+         */
+        $(".copy-href").click(function () {
+            var href = decodeURI(window.location.href);
+            prom(href);
+            return false;
+        });
+        /*复制链接对话框*/
+        function prom(names) {
+            var name = prompt("请复制链接", names); //将输入的内容赋给变量 name ，  
+        }
+
+        imgLocation();
+        function imgLocation() {
+            pubu_container = $(".works");
+            pubu_container.imagesLoaded(function () {
+                pubu_container.masonry({
+                    itemSelector: "li"
+                });
+            });
+        }
+
+
+        function nofind() {
+            var img = event.srcElement;
+            img.src = "http://static.redocn.com/usercenter/images/sucai_small_img_test.png";
+            img.onerror = null;//控制不要一直跳动
+        }
+
+
+        function loadshoucang() {
+            if (document.cookie.indexOf("uchome_newauth") != -1) {
+                var tid = "9089185";
+                var data = "tid=" + tid;
+                $.post('/favorites/checkifaddfav', data, function (res) {
+                    //
+                    if (res.status == 1) {
+                        //已经收藏过了
+                        $("#shouchang_btn").addClass('u-coll-btn2').show();
+                    } else {
+                        //成功
+                        $("#shouchang_btn").removeClass('u-coll-btn2').show();
+                    }
+                });
+            }
+        }
+
+        // loadshoucang();
+
+
+        /*提示显示的时间*/
+        function timer() {
+            var time = null;
+            var count = 1;
+            time = setInterval(function () {
+                if (count <= 0) {
+                    clearInterval(time);
+                    $(".modal-wrap").fadeOut();
+                } else {
+                    count--
+                }
+
+            }, 1000);
+        }
+
+
+
+  
+
+        
+        function nofind() {
+            var img = event.srcElement || event.target;
+            img.src = "http://static.redocn.com/usercenter/images/sucai_small_img.png";
+            img.onerror = null;//控制不要一直跳动
+        }
+
+        var thread_tid = '9089185';
+    </script>
+
+
+    <!-- 广告 -->
+
+    <!-- <div class="bottom_guanggao">
+        <a href="http://m.redocn.com/jiedan?ent=85" class="u-fixed-pic">
+            <img src="__PUBLIC__/couplet/detail_files/bottom_gg.png" alt="">
+        </a>
+    </div> -->
+<!-- 
+    <footer class="g-footer">
+        <div class="am-footer-switch am-text-sm">
+            <p>对联文库</p>
+             <p>
+                <a href="tel:400-1780-118" class="redocn_mobile">电话&nbsp;400-1780-118</a>QQ&nbsp;800089192</p>
+            <p>
+                <a id="godesktop" class="am-color-redocn" href="http://sucai.redocn.com/jieri_9089185.html">电脑版</a>
+                <span>找设计!&nbsp;上红动</span>
+            </p>
+        </div>
+    </footer> -->
+
+</body>
+
+</html>

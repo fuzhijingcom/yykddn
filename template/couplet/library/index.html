@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>对联文库</title>
+    <link rel="stylesheet" href="//cdn.c3w.com.cn/css/weui.min.css"/>
+</head>
+<body>
+    
+    
+    <foreach name="list" item="v">
+        <div class="weui-cells__title">{$v.central}</div>
+        <div class="weui-cells">
+            <a class="weui-cell weui-cell_access" href="javascript:;">
+                <div class="weui-cell__bd">
+                    <p>{$v.first}</p>
+                </div>
+            </a>
+            <a class="weui-cell weui-cell_access" href="javascript:;">
+                <div class="weui-cell__bd">
+                    <p>{$v.second}</p>
+                </div>
+            </a>
+        </div>
+	</foreach>	
+       
+		<p class="weui-btn-area">
+            <a href="{:U('add')}" class="weui-btn weui-btn_primary">提交对联</a>
+        </p>
+    
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="__PUBLIC__/js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+
+   var ShareLink = "http://www.yykddn.com/couplet"; //默认分享链接
+   var ShareImgUrl = "http://www.yykddn.com/public/couplet/share.jpg"; //分享图标
+
+
+$(function() {
+	if(isWeiXin()){
+		$.ajax({
+			type : "POST",
+			url:"http://www.yykddn.com/index.php?m=Mobile&c=Index&a=ajaxGetWxConfig&t="+Math.random(),
+			data:{'askUrl':encodeURIComponent(location.href.split('#')[0])},		
+			dataType:'JSON',
+			success: function(res)
+			{
+				//微信配置
+				wx.config({
+				    debug: false, 
+				    appId: res.appId,
+				    timestamp: res.timestamp, 
+				    nonceStr: res.nonceStr, 
+				    signature: res.signature,
+				    jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage','onMenuShareQQ','onMenuShareQZone','hideOptionMenu'] // 功能列表，我们要使用JS-SDK的什么功能
+				});
+			},
+			error:function(){
+				alert('666');
+				return false;
+			}
+		}); 
+
+		// config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在 页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready 函数中。
+		wx.ready(function(){
+		    // 获取"分享到朋友圈"按钮点击状态及自定义分享内容接口
+		    wx.onMenuShareTimeline({
+		        title: "对联文库", // 分享标题
+		        link:ShareLink,
+		        imgUrl:ShareImgUrl // 分享图标
+		    });
+
+		    // 获取"分享给朋友"按钮点击状态及自定义分享内容接口
+		    wx.onMenuShareAppMessage({
+		        title: "对联文库", // 分享标题
+		        desc: "对联文库，驿源出品", // 分享描述
+		        link:ShareLink,
+		        imgUrl:ShareImgUrl // 分享图标
+		    });
+			// 分享到QQ
+			wx.onMenuShareQQ({
+		        title: "对联文库", // 分享标题
+		        desc: "对联文库，驿源出品", // 分享描述
+		        link:ShareLink,
+		        imgUrl:ShareImgUrl // 分享图标
+			});	
+			// 分享到QQ空间
+			wx.onMenuShareQZone({
+		        title: "对联文库", // 分享标题
+		        desc: "对联文库，驿源出品", // 分享描述
+		        link:ShareLink,
+		        imgUrl:ShareImgUrl // 分享图标
+			});
+		   
+		});
+	}
+});
+
+function isWeiXin(){
+    var ua = window.navigator.userAgent.toLowerCase();
+    if(ua.match(/MicroMessenger/i) == 'micromessenger'){
+        return true;
+    }else{
+        return false;
+    }
+}
+</script>
+
+</body></html>

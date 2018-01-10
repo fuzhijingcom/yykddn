@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>自定义对联</title>
+    <link rel="stylesheet" href="//cdn.c3w.com.cn/css/weui.min.css"/>
+</head>
+<body>
+<form action="{:U('add')}" method="post">
+ 		<div class="weui-cells__title">横批</div>
+        <div class="weui-cells">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <input class="weui-input" type="text" name="central" placeholder="请输入横批"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="weui-cells__title">上联</div>
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                   <textarea class="weui-textarea" placeholder="请输入上联" name="first" rows="3"></textarea> 
+                </div>
+            </div>
+        </div>
+
+
+        <div class="weui-cells__title">文本域</div>
+        <div class="weui-cells weui-cells_form">
+            <div class="weui-cell">
+                <div class="weui-cell__bd">
+                    <textarea class="weui-textarea" placeholder="请输入下联" name="second" rows="3"></textarea>
+                </div>
+            </div>
+        </div>
+
+		<p class="weui-btn-area">
+            <button type="submit" class="weui-btn weui-btn_primary">提交</button>
+        </p>
+
+</form>
+</body>
+</html>
