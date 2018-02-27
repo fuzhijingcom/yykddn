@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>发送短信</title>
+    <link rel="stylesheet" href="__PUBLIC__/css/weui.min.css" />
+    <script src="__PUBLIC__/js/jquery-1.10.2.min.js"></script>
+    <style type="text/css">
+        body {
+            background-color: #efeff4;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+
+        .container {
+            padding-bottom: 20px
+        }
+
+        .weui-cells_checkbox>.weui-cell>* {
+            pointer-events: none
+        }
+
+        .list__textarea-label_1IUds {
+            float: left;
+            color: #222;
+            margin-bottom: 10px
+        }
+
+        .list__no-arrow_1QzDq:after {
+            display: none!important
+        }
+
+        .list__warn_qnkn9 {
+            color: #e64340!important
+        }
+
+        a.weui-cell {
+            color: #222
+        }
+
+        .weui-cell__ft {
+            font-size: 0
+        }
+
+        .zh_CN .weui-cell__ft,
+        .zh_HK .weui-cell__ft,
+        .zh_TW .weui-cell__ft {
+            font-size: 17px
+        }
+
+        .comment__textarea-label_3n9Pv {
+            float: left;
+            color: #222;
+            margin-bottom: 10px
+        }
+
+        .center {
+            text-align: center
+        }
+
+        .red {
+            color: red;
+        }
+        
+    </style>
+</head>
+
+<body>
+
+   
+        <!-- <h2 class="weui-msg__title center">键盘回车发送</h2> -->
+        <p class="weui-msg__desc center red">键盘回车发送</p>
+    
+    <div class="weui-cells__title center"><a href="javascript:go();">查看发送数据</a></div>
+
+    <div class="weui-cells">
+
+        <div class="weui-cell weui-cell_select weui-cell_select-before">
+            <div class="weui-cell__hd">
+                <select class="weui-select" name="type" id="type">
+                    <option value="">快递种类</option>
+                        <foreach name="kd" item="v">
+                            <option value="{$v.type}">{$v.kuaidi_name}</option>
+                        </foreach>
+                </select>
+            </div>
+            <div class="weui-cell__bd">
+                <input class="weui-input" name="time" id="time" type="text" placeholder="请输入派送时间"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="weui-cells__title">输入11位手机号码，按键盘回车发送</div>
+
+    <!-- <div class="weui-cells">
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <input class="weui-input" id="number" type="number" placeholder="请输入号码" maxlength="11" onkeyup="this.value=this.value.replace(/\D/g,'')" autofocus/>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="weui-cells weui-cells_form">
+        <div class="weui-cell">
+            <div class="weui-cell__bd">
+                <textarea class="weui-textarea" placeholder="请输入号码" rows="2" pattern="[0-9]*"></textarea>
+                <div class="weui-textarea-counter">点击键盘回车发送</div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="weui-cells__title center">工号：{$user_id} &nbsp; 昵称：{$nickname}</div> -->
+
+    <!-- <div class="weui-msg__opr-area">
+        <p class="weui-btn-area">
+            <a href="javascript:send();" class="weui-btn weui-btn_primary">发送</a>
+        </p>
+    </div> -->
+
+    <!--BEGIN dialog2-->
+    <div class="js_dialog" id="iosDialog2" style="display: none;">
+        <div class="weui-mask"></div>
+        <div class="weui-dialog">
+            <div class="weui-dialog__bd">号码不正确，重新输入</div>
+            <div class="weui-dialog__ft">
+                <a href="javascript:close();" class="weui-dialog__btn weui-dialog__btn_primary">重新输入</a>
+            </div>
+        </div>
+    </div>
+    <!--END dialog2-->
+
+
+     <!-- loading toast -->
+     <div id="loadingToast" style="display:none;">
+        <div class="weui-mask_transparent"></div>
+        <div class="weui-toast">
+            <i class="weui-loading weui-icon_toast"></i>
+            <p class="weui-toast__content">正在发送</p>
+        </div>
+    </div>
+
+    <script>
+        $(document).keypress(function (e) {
+            // 回车键事件  
+            if (e.which == 13) {
+                send();
+            }
+        });
+
+
+        function send() {
+            var type = $.trim($("#type").val());
+            var time = $.trim($("#time").val());
+            if (type == "") {
+                alert("请选择种类");
+            }
+            if (time == "") {
+                alert("请输入派送时间");
+            }
+
+
+
+            var number = $.trim($(".weui-textarea").val());
+
+            if (number == "") {
+                alert("请输入号码");
+            } else if (number.length !== 11) {
+                $("#iosDialog2").show();
+            } else {
+               //发送api
+               $("#loadingToast").show();
+               $.get("http://www.yykddn.com/send/api/save?number="+number+"&user_id={$user_id}&type="+type+"&time="+time,function(data,status){
+                    
+                    if(status == "success"){
+                        $(".weui-msg__desc").html(number + "发送成功");
+                        $(".weui-textarea").val("");
+                        $("#loadingToast").hide();
+                    }else{
+                        alert("发送出错");
+                    }
+
+                });
+
+            }
+
+
+        }
+
+
+        function close() {
+            $("#iosDialog2").hide();
+            $(".weui-textarea").val("");
+        }
+
+        function go(){
+            $.get("http://www.yykddn.com/send/api/send?user_id={$user_id}",function(data,status){
+                if(status == "success"){
+                    alert("今天成功发送："+data);
+                }else{
+                    alert("查询出错");
+                }
+            });
+
+            
+        }
+    </script>
+
+
+</body>
+
+</html>
