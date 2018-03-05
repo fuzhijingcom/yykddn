@@ -242,7 +242,7 @@ class Index extends MobileBase {
         
         $code = I('code');
         if($code !== '4f2016c6b934d55bd7120e5d0e62cce3'){
-        	$this->error("加群验证链接已经失效");
+        	$this->error("验证链接已经失效");
         	exit;
         }
         
@@ -261,7 +261,7 @@ class Index extends MobileBase {
             $this->success('可以抢单了，你已经通过验证','index');
         }else{
             M('users_qiang')->where('user_id',$this->user_id)->save(array('qun'=>1));
-            $this->success('恭喜你，通过入群培训，可以抢单了','index');
+            $this->success('恭喜你，通过培训，可以抢单了','index');
         }
         
     }

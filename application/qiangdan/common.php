@@ -33,27 +33,7 @@ function get_heading_by_id($id){
     return $img;
 }
 
-function yongjin($order_id){
-    $order = M('kd_order')->where('order_id',$order_id)->find();
-    $order_amount = $order['order_amount'];
-    
-    $type = $order['type'];
-    $kouchu = M('kd')->where('type',$type)->getField('money');
-    
-    $type = $order['type'];
-    if($type=='wm'){
-        $fen = (int)$order['admin_note'];
-        
-        $yongjin = (float)$order_amount - ( (float)$kouchu  * $fen);
-        
-    }else{
-        
-    $yongjin = (float)$order_amount - (float)$kouchu;
-    
-    }
-    
-    return $yongjin;
-}
+
 
 function get_msg_content($order_id){
     $msg_content = M('feedback')->where('order_id',$order_id)->getField('msg_content');

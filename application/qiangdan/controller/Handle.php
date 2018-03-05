@@ -91,6 +91,11 @@ class Handle extends MobileBase {
             	M('kd_order_handle')->where(array('order_id'=>$order_id))->save(array('reason'=> $reason,'receiver'=>$user_id,'status'=>0));
             }
             
+            $jssdk = new \app\mobile\logic\Jssdk("wx9a1f0bef4dbb9da0","9879b778276fe4349cbc53d835d70286");
+            $wx_content = "抢单员申请审批：".$reason;
+            $out = $jssdk->push_msg('oEORvxABet1M0SNuQlUn2GojtLEs',$wx_content);
+
+
             $this->success('等待审批','qiangdan/order/my_order');
         }
         
