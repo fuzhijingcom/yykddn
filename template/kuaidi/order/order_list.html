@@ -73,7 +73,7 @@
                     <span class="red">￥{$list.order_amount}</span><span class="threel" id="goodsnum"></span>
                 </span>
    
-<if condition="$list.order_status eq 0"> <a class="shop-rebuy paysoon" onclick="cancel_order({$list.order_id})">取消订单</a></if>
+<if condition="$list.order_status eq 0 && $list.type neq 'cdb' "> <a class="shop-rebuy paysoon" onclick="cancel_order({$list.order_id})">取消订单</a></if>
 <if condition="$list.order_status neq 0">  <a class="shop-rebuy " href="{:U('/kuaidi/order/order_detail',array('id'=>$list['order_id']))}">查看详情</a></if>
          </div>
         </div>
