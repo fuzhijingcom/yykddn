@@ -34,7 +34,8 @@ class Money extends MobileBase {
         
     }
     public function water(){
-    	$list = M('kd_order_sz')->field('order_id,consignee,order_amount,transaction_id')->order('order_id desc')->where(array('pay_status'=>1))->select();
+        $con['order_id'] = array('egt',670);
+    	$list = M('kd_order_sz')->where($con)->field('order_id,consignee,order_amount,transaction_id')->order('order_id desc')->where(array('pay_status'=>1))->select();
     	$this->assign('list',$list);
     	
     	
@@ -100,6 +101,10 @@ class Money extends MobileBase {
     public function tixian_action(){
         $id = I('id/d');
         $detail = M('withdrawals')->where('id',$id)->find();
+        if($detail['status'] != 0){
+            $this->redirect('work/money/index');
+        }
+
         $user_id = $detail['user_id'];
         
         $user_money = M('users')->where('user_id',$user_id)->getField('user_money');
@@ -115,7 +120,44 @@ class Money extends MobileBase {
             $this->error('只剩下'.$user_money.'元，不够本次提现，已取消该次提现','work/money/index');
         }
         
+        if($detail['account_bank'] == "weixin"){
+            //如果是微信提现
+          
+            if((float)$detail['money'] < 1){
+                $beizhu = '拒绝提现，提现需大于1元';
+                $status = 2;
+                M('withdrawals')->where('id',$id)->save(array('remark'=>$beizhu,'status'=>$status));
+                $logic = new MoneyLogic();
+                $data = $logic->tixian($user_id,$id,$kefu,$beizhu,$status);
+                $this->error('拒绝提现，提现需大于1元','work/money/index');
+            }
+
+            $url = "http://www.yykddn.com/pay/payment/transfer?type=tixian&id=".$id;
+            $res =  httpRequest($url,'GET');
+
+            echo $res;
+            if($res == "SUCCESS"){
+
+                $payresult = accountLog($user_id,-$detail['money'],-$detail['money'],"提现{$detail['money']}元,扣除{$detail['money']}积分");
+            
+                if($payresult == true){
+                    $remark = '提现成功，已到账，请查收。（提现方式：微信）请查看微信钱包。';
+                    $status = 1;
+                    M('withdrawals')->where('id',$id)->save(array('remark'=>$remark.'客服：'.$kefu,'status'=>$status));
+                    $logic = new MoneyLogic();
+                    $data = $logic->tixian($user_id,$id,$kefu,$remark,$status);
+                    $this->success('提现成功','work/money/index');               
+                }else{
+                    $this->error('服务器开小差了，操作失败','work/money/index');
+                }
+
+            }
+
+        }
+
+
         if(IS_POST){
+
             $payresult = accountLog($user_id,-$detail['money'],-$detail['money'],"提现{$detail['money']}元,扣除{$detail['money']}积分");
             
             if($payresult == true){
@@ -131,10 +173,14 @@ class Money extends MobileBase {
                 
         }
         
-        
         $this->assign('detail', $detail);
         return $this->fetch();
     }
+    
+    private function tixian_after(){
+
+    }
+
     
     private function money_list(){
         $condition['user_id'] = array('gt',1);
