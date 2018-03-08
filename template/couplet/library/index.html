@@ -1,41 +1,1246 @@
-<!DOCTYPE html>
-<html lang="zh-cn">
+﻿<!DOCTYPE html>
+<!-- saved from url=(0052)http://m.redocn.com/so-sheji/b6d4c1aac9e8bcc6.htm### -->
+<html class=" js canvas canvastext no-touch rgba backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations cssgradients csstransforms csstransforms3d csstransitions fontface">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-    <title>对联文库</title>
-    <link rel="stylesheet" href="//cdn.c3w.com.cn/css/weui.min.css"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>对联文库</title>
+	<meta name="keywords" content="对联设计">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+	<meta content="telephone=no" name="format-detection">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="applicable-device" content="mobile">
+	<meta http-equiv="Cache-Control" content="no-transform">
+	<meta http-equiv="Cache-Control" content="no-siteapp">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="__PUBLIC__/couplet/index1_files/amazeui.min.css">
+	<link href="__PUBLIC__/couplet/index1_files/base.css" type="text/css" rel="stylesheet">
+	<link href="__PUBLIC__/couplet/index1_files/index.css" type="text/css" rel="stylesheet">
+	<link href="__PUBLIC__/couplet/index1_files/item.css" type="text/css" rel="stylesheet">
+	<!--<link href="http://static.redocn.com/usercenter/m/css/demo.css?t=20180104" rel="stylesheet" type="text/css"  />-->
+	<link href="__PUBLIC__/couplet/index1_files/search_result.css" type="text/css" rel="stylesheet">
+	<link href="__PUBLIC__/couplet/index1_files/menu_sideslide.css" rel="stylesheet" type="text/css">
+	<link href="__PUBLIC__/couplet/index1_files/new_page.css" type="text/css" rel="stylesheet">
+	<link href="__PUBLIC__/couplet/index1_files/flickerplate.css" type="text/css" rel="stylesheet">
+	<script src="__PUBLIC__/couplet/index1_files/hm.js"></script>
+	<script>var _hmt = _hmt || [];</script>
+	<script src="__PUBLIC__/couplet/index1_files/jquery1.8.min.js" type="text/javascript"></script>
+	<script src="__PUBLIC__/couplet/index1_files/top.js" type="text/javascript"></script>
+	<script src="__PUBLIC__/couplet/index1_files/iscroll.js" type="text/javascript"></script>
+	<script src="__PUBLIC__/couplet/index1_files/echo.js" type="text/javascript"></script>
+	<script src="__PUBLIC__/couplet/index1_files/modernizr-custom-v2.7.1.min.js" type="text/javascript"></script>
+	<script src="__PUBLIC__/couplet/index1_files/jquery-finger-v0.1.0.min.js" type="text/javascript"></script>
+	<script src="__PUBLIC__/couplet/index1_files/flickerplate.min.js" type="text/javascript"></script>
+	<script>
+		$(function () {
+			echo.init({
+				offset: 100,
+				throttle: 250,
+				unload: false,
+			});
+		})
+		$(function () {
+			var resizeli = function () {
+				$(".col_li").each(function (i, v) {
+					var self = $(this);
+					var _img = self.find('img');
+					var _img_w = parseFloat(_img.attr('width'));
+					var _img_h = parseFloat(_img.attr('height'));
+					//计算box 的 宽和高
+					var li_w = parseFloat(self.width());
+					var li_h = li_w * _img_h / _img_w;
+					_img.height(li_h);
+				})
+			}
+			var evt = "onorientationchange" in window ? "orientationchange" : "resize";
+			window.addEventListener(evt, function () {
+				resizeli();
+			}, false);
+			window.addEventListener('load', function () {
+				resizeli();
+			}, false);
+		});
+
+
+
+	</script>
 </head>
+
 <body>
-    
-    
-    <foreach name="list" item="v">
-        <div class="weui-cells__title">{$v.central}</div>
-        <div class="weui-cells">
-            <a class="weui-cell weui-cell_access" href="javascript:;">
-                <div class="weui-cell__bd">
-                    <p>{$v.first}</p>
-                </div>
-            </a>
-            <a class="weui-cell weui-cell_access" href="javascript:;">
-                <div class="weui-cell__bd">
-                    <p>{$v.second}</p>
-                </div>
-            </a>
-        </div>
-	</foreach>	
-       
-		<p class="weui-btn-area">
-            <a href="{:U('add')}" class="weui-btn weui-btn_primary">提交对联</a>
-        </p>
-    
+	<script type="text/javascript" src="__PUBLIC__/couplet/index1_files/jquery.lazyload.js"></script>
+	<style>
+		body {
+			transtion: all 1s linear;
+		}
+
+		.g-lists {
+			max-width: 620px;
+			width: 100%;
+			overflow: hidden;
+			background: #f0f0f0;
+			margin-bottom: 14px;
+		}
+
+		.screen-nav {
+			background: #fff;
+		}
+
+		#container {
+			text-align: center;
+			margin-top: 15px;
+		}
+
+		.am-btn {
+			display: inline-block;
+			padding: 5px 10px 3px;
+			background: #991010;
+			color: #fff;
+			border-radius: 3px;
+			border: none;
+			margin-top: 20px;
+		}
+
+		#goTopBtn {
+			bottom: 0px;
+		}
+	</style>
+	<div class="headNav-search">
+		<div class="header-user-recharge">
+			 <a href="{:U('add')}"  style="margin:3px 10px 4px 2px;
+			 width: 50px;
+			 height: 50px;
+			 display: inline-block;
+			 background: url(__PUBLIC__/couplet/edit.png) no-repeat center;
+			 background-size: 20px 24px;"></a> 
+		</div>
+		<div class="header-search-input">
+			<span class="header-search-gray"></span>
+			<input type="search" class="soso s" placeholder="搜索对联" value="" autocomplete="off">
+			<span class="search-result"></span>
+		</div>
+	
+		<div class="header-user-center new-user-center">
+			<a href="" class="user-info"></a>
+		</div>
+		<div class="g-menu">
+			<a  class="nav-menus"></a>
+			<ul class="g-menu-lists" style="overflow:auto;">
+				<li>
+					<a href="/couplet">首页</a>
+				</li>
+				<li>
+					<a href="/couplet">分类</a>
+				</li>
+				
+				
+			</ul>
+		</div>
+	</div>
+	<!-- <nav class="screen-nav">
+		<ul>
+			<li>
+				<select id="search_item">
+					<option value="k" selected="selected">关键词</option>
+					<option value="s">素材标题</option>
+					<option value="u">用户名</option>
+					<option value="t">素材编号</option>
+				</select>
+			</li>
+			<li>
+				<select id="sucaitype">
+					<option value="all" selected="selected">是否收费</option>
+					<option value="m">收费</option>
+					<option value="f">免费</option>
+				</select>
+			</li>
+			<li>
+				<select id="orderby">
+					<option value="gongshi" selected="selected">默认排序</option>
+					<option value="time">发布时间 </option>
+					<option value="down">下载数量 </option>
+				</select>
+			</li>
+			<li>
+				<select id="attach_type">
+					<option value="0">文件类型</option>
+					<option value="5">PSD</option>
+					<option value="1">JPG</option>
+					<option value="3">CDR</option>
+					<option value="2">AI</option>
+					<option value="4">EPS</option>
+					<option value="70">pptx</option>
+					<option value="39">mov</option>
+					<option value="32">ppt</option>
+					<option value="84">skp</option>
+					<option value="43">mpg</option>
+					<option value="41">aep</option>
+					<option value="66">mp4</option>
+					<option value="15">其他</option>
+					<option value="7">FLA</option>
+					<option value="24">TIF</option>
+					<option value="17">max</option>
+					<option value="80">dxf</option>
+					<option value="25">CAD</option>
+					<option value="76">vsp</option>
+				</select>
+			</li>
+		</ul>
+	</nav> -->
+	<script type="text/javascript">		$(function () {
+			//			var top = $(".g-lists").offset().top-($(".g-lists").outerHeight()+$(".g-fixed-wrap").outerHeight());
+			//			$(window).scroll(function(){
+			//				var stop = $(this).scrollTop();
+			//				var $dom = $(".g-fixed-wrap");
+			//				if(stop>top){
+			//					$dom[0].style.display = "none";
+			//				}else{
+			//					$dom[0].style.display = "block";
+			//				}
+			//			});
+
+			//			var keys = $(".tag-list a");
+			//			for(var i=0;i<keys.length;i++){
+			//				var newStr = keys.eq(i).text().substr(0,6);
+			//				keys.eq(i).text(newStr);
+			//			}
+		});
+		function fade_img(img) {
+			$(img).animate({ "opacity": 1 }, 200);
+		}
+		function gotourl() {
+			var keyword = $('.s').val();
+			var search_item = $('#search_item').val();
+			var sucaitype = $('#sucaitype').val();
+			var orderby = $('#orderby').val();
+			var attchtype = '0';
+			//			var attchtypes = new Array();
+			//
+			//			$('.allattchtype:checked').each(function(k,v){		 			        	
+			//				attchtypes.push($(v).val())
+			//			});
+			//			attchtype = attchtypes.join('_');
+
+			attchtype = $("#attach_type").val();
+			if (!attchtype) { attchtype = 0; }
+			if (keyword == '') {
+				alert('请填写搜索关键词');
+			} else {
+				//添加到历史记录
+				var h = new searchHistory();
+				h.add(keyword);
+				//window.location.href='/s-'+keyword+'-'+search_item+'-'+sucaitype+'--'+attchtype+'--'+orderby+'-1.htm';
+				//window.location.href = '/s-' + keyword + '-' + search_item + '-' + sucaitype + '--' + attchtype + '--' + orderby + '-1-1.htm';
+				window.location.href = '/couplet/library/search?word=' + keyword;
+				
+			}
+		}
+		$(function () {
+			$('#searchform').submit(function () {
+				gotourl();
+			})
+			$('.searchok').click(function () {
+				gotourl();
+			});
+			$('#search_button').click(function () {
+				gotourl();
+			});
+
+			$("#search_item,#sucaitype,#orderby,#attach_type").change(function () {
+				gotourl();
+			});
+		});
+		$(function () {
+			var hides = $(".positions");
+			$(".block").click(function () {
+				$("#search_button").show();
+				hides.hide();
+			});
+			$(".tag-list a").click(function () {
+				$("#search_button").hide();
+			});
+		})
+		$(function () {
+			$(".soso").keydown(function (e) {
+				if (e.keyCode === 13) {
+					gotourl();
+				}
+			});
+		});
+
+	</script>
+	<section class="tag-list">
+		<!-- <div class="active">
+			<span>
+				<a herf="javascript:void(0)">对联设计</a>
+			</span>
+		</div> -->
+		<div>
+			<span>
+				<a href="/couplet/library/zidingyi">自定义对联</a>
+			</span>
+		</div>
+		<!-- <div>
+			<span>
+				<a href="http://m.redocn.com/so-sheji/b6d4c1aac9e8bcc6cbd8b2c4.htm">对联设计素材</a>
+			</span>
+		</div> -->
+		<div>
+			<span>
+				<a href="/couplet/library/add">我要定制</a>
+			</span>
+		</div>
+		<div>
+			<span>
+				<a href="/couplet/library/zidingyi">自定义文库</a>
+			</span>
+		</div>
+		<!-- <div>
+			<span>
+				<a href="http://m.redocn.com/so-sheji/b6d4c1aab4bac1aac9e8bcc6.htm">对联春联设计</a>
+			</span>
+		</div> -->
+		
+	</section>
+	<!-- <footer class="g-guanggao-wrap">
+		<a href="http://m.redocn.com/jiedan?ent=10" class="u-fixed-pic">
+			<img src="__PUBLIC__/couplet/index1_files/list-banner-ico.png" alt="">
+		</a>
+	</footer> -->
+	<section id="search-content">
+		<div id="container">
+			<ul class="col" style="margin-right:6px;">
+				<li>
+					<a href="/couplet/library/detail/id/9089185.html">
+						<div>
+							<img style="opacity: 1;" onload="fade_img(this);" src="__PUBLIC__/couplet/index1_files/xiqinggounianduilian_9089185_small.jpg" alt="喜庆狗年对联"
+							 height="347" width="204">
+						</div>
+						<div class="water_user">喜庆狗年
+							<strong>对联</strong>
+						</div>
+					</a>
+				</li>
+				
+				<li>
+					<a href="/couplet/library/detail/id/9040073.html">
+						<div>
+							<img style="opacity: 1;" onload="fade_img(this);" src="__PUBLIC__/couplet/index1_files/2018gounianchunjieduilianfuzi9_9040073_small.jpg"
+							 alt="2018狗年春节对联福字" height="221" width="204">
+						</div>
+						<div class="water_user">2018狗年春节
+							<strong>对联</strong>福字</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/8945423.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20171115/chunjiefuxinggaozhaoduiliansheji_8945423_small.jpg"
+							 src="__PUBLIC__/couplet/index1_files/chunjiefuxinggaozhaoduiliansheji_8945423_small.jpg" alt="春节福星高照对联设计" height="306" width="204"
+							 style="display: inline;">
+						</div>
+						<div class="water_user">春节福星高照
+							<strong>对联</strong>设计</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/8957711.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20171120/xiyingxinchunchunjieduilianchunlian_8957711_small.jpg"
+							 src="__PUBLIC__/couplet/index1_files/xiyingxinchunchunjieduilianchunlian_8957711_small.jpg" alt="喜迎新春春节对联春联" height="306" width="204"
+							 style="display: inline;">
+						</div>
+						<div class="water_user">喜迎新春春节
+							<strong>对联</strong>春
+							<strong>联</strong>
+						</div>
+					</a>
+				</li>
+			
+				<li>
+					<a href="/couplet/library/detail/id/8269891.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheying/20170527/muqijinduilian_8269891_small.jpg" src="__PUBLIC__/couplet/index1_files/muqijinduilian_8269891_small.jpg"
+							 alt="楠木漆金对联" height="347" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">楠木漆金
+							<strong>对联</strong>
+						</div>
+					</a>
+				</li>
+				
+				<li>
+					<a href="/couplet/library/detail/id/8122365.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20170420/chunjiegonghexinchungongmenduilian_8122365_small.jpg"
+							 src="__PUBLIC__/couplet/index1_files/chunjiegonghexinchungongmenduilian_8122365_small.jpg" alt="春节恭贺新春拱门对联" height="153" width="204"
+							 style="display: inline;">
+						</div>
+						<div class="water_user">春节恭贺新春拱门
+							<strong>对联</strong>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/7656289.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20161220/caiyuanguangjinduilianxiqingbeijing_7656289_small.jpg"
+							 src="__PUBLIC__/couplet/index1_files/caiyuanguangjinduilianxiqingbeijing_7656289_small.jpg" alt="财源广进对联喜庆背景" height="204" width="204"
+							 style="display: inline;">
+						</div>
+						<div class="water_user">财源广进
+							<strong>对联</strong>喜庆背景</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/7710311.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20161229/2017jinianduilianchunlianfuzisheji_7710311_small.jpg"
+							 src="__PUBLIC__/couplet/index1_files/2017jinianduilianchunlianfuzisheji_7710311_small.jpg" alt="2017鸡年对联春联福字设计" height="252" width="204"
+							 style="display: inline;">
+						</div>
+						<div class="water_user">2017鸡年
+							<strong>对联</strong>春
+							<strong>联</strong>福字设计</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/7609807.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20161210/2017jinianchunjieduilianmobanxiazai_7609807_small.jpg"
+							 src="__PUBLIC__/couplet/index1_files/2017jinianchunjieduilianmobanxiazai_7609807_small.jpg" alt="2017鸡年春节对联模版下载" height="242" width="204"
+							 style="display: inline;">
+						</div>
+						<div class="water_user">2017鸡年春节
+							<strong>对联</strong>模版下载</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/7581683.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20161205/2017jinianchunlianduilianshejimoban_7581683_small.jpg"
+							 src="__PUBLIC__/couplet/index1_files/2017jinianchunlianduilianshejimoban_7581683_small.jpg" alt="2017鸡年春联对联" height="309" width="204"
+							 style="display: inline;">
+						</div>
+						<div class="water_user">2017鸡年春
+							<strong>联对联</strong></div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/7501967.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20161124/2017jinianchunlianduilianshejimoban_7501967_small.jpg"
+							 src="__PUBLIC__/couplet/index1_files/2017jinianchunlianduilianshejimoban_7501967_small.jpg" alt="2017鸡年春联对联" height="285" width="204"
+							 style="display: inline;">
+						</div>
+						<div class="water_user">2017鸡年春
+							<strong>联对联</strong></div>
+					</a>
+				</li>
+				
+				<li>
+					<a href="/couplet/library/detail/id/7423893.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20161108/2017jinianchunjieduilianfuzi_7423893_small.jpg"
+							 src="__PUBLIC__/couplet/index1_files/2017jinianchunjieduilianfuzi_7423893_small.jpg" alt="2017鸡年春节对联福字" height="220" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">2017鸡年春节
+							<strong>对联</strong>福字</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/7293565.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20161015/zuixin2017jingmeiduiliansheji_7293565_small.jpg"
+							 src="__PUBLIC__/couplet/index1_files/zuixin2017jingmeiduiliansheji_7293565_small.jpg" alt="最新2017精美对联设计" height="140" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">最新2017精美
+							<strong>对联</strong>设计</div>
+					</a>
+				</li>
+
+				
+				<li>
+					<a href="/couplet/library/detail/id/9040073.html">
+						<div>
+							<img style="opacity: 1;" onload="fade_img(this);" src="__PUBLIC__/couplet/index2_files/2018gounianchunjieduilianfuzi9_9040073_small.jpg"
+							 alt="2018狗年春节对联福字" height="221" width="204">
+						</div>
+						<div class="water_user">2018狗年
+							<strong>春节对联</strong>福字</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/8891397.html">
+						<div>
+							<img style="opacity: 1;" onload="fade_img(this);" src="__PUBLIC__/couplet/index2_files/chunjieduilianfuxinggaozhao_8891397_small.jpg"
+							 alt="春节对联福星高照" height="232" width="204">
+						</div>
+						<div class="water_user">
+							<strong>春节对联</strong>福星高照</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/9059089.html">
+						<div class="juchibox">
+							<span class="juchi"></span>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20171214/xinchunchunjieduilian_9059089_small.jpg"
+							 src="__PUBLIC__/couplet/index2_files/xinchunchunjieduilian_9059089_small.jpg" alt="新春春节对联" height="769" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">新春
+							<strong>春节对联</strong>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/8698775.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20170912/chunlianduiliansheji_8698775_small.jpg" src="__PUBLIC__/couplet/index2_files/chunlianduiliansheji_8698775_small.jpg"
+							 alt="春联对联设计" height="275" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">春
+							<strong>联对联</strong>设计</div>
+					</a>
+				</li>
+				
+				
+				
+				
+				<li>
+					<a href="/couplet/library/detail/id/8744151.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20170925/gounianfuziduilian_8744151_small.jpg" src="__PUBLIC__/couplet/index2_files/gounianfuziduilian_8744151_small.jpg"
+							 alt="狗年福字对联" height="204" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">狗年福字
+							<strong>对联</strong>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/9121911.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20180108/2018gounianguanggaoduiliansheji_9121911_small.jpg"
+							 src="__PUBLIC__/couplet/index2_files/2018gounianguanggaoduiliansheji_9121911_small.jpg" alt="2018狗年广告对联设计" height="204" width="204"
+							 style="display: inline;">
+						</div>
+						<div class="water_user">2018狗年广告
+							<strong>对联</strong>设计</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/7823113.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20170124/zhongguofeng2017jinianchunjieduilian_7823113_small.jpg"
+							 src="__PUBLIC__/couplet/index2_files/zhongguofeng2017jinianchunjieduilian_7823113_small.jpg" alt="中国风2017鸡年春节对联" height="307" width="204"
+							 style="display: inline;">
+						</div>
+						<div class="water_user">中国风2017鸡年
+							<strong>春节对联</strong>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/7617333.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20161212/2017jinianhongsexiqingchunjieduiliansheji_7617333_small.jpg"
+							 src="__PUBLIC__/couplet/index2_files/2017jinianhongsexiqingchunjieduiliansheji_7617333_small.jpg" alt="2017鸡年红色喜庆春节对联设计" height="228"
+							 width="204" style="display: inline;">
+						</div>
+						<div class="water_user">2017鸡年红色喜庆
+							<strong>春节对联</strong>设计</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/5634152.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20151221/jingzhihounianchunjieduilian_5634152_small.jpg"
+							 src="__PUBLIC__/couplet/index2_files/jingzhihounianchunjieduilian_5634152_small.jpg" alt="精致猴年春节对联" height="202" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">精致猴年
+							<strong>春节对联</strong>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/3761215.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20141222/f201401201012duilian_3761215_small.jpg" src="__PUBLIC__/couplet/index2_files/f201401201012duilian_3761215_small.jpg"
+							 alt="2015年春节对联素材" height="211" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">2015年
+							<strong>春节对联</strong>素材</div>
+					</a>
+				</li>
+				<!-- 精选专辑 start -->
+				<!-- 精选专辑 end -->
+			</ul>
+			<ul class="col" style="margin-right:6px">
+				<li>
+					<a href="/couplet/library/detail/id/9089179.html">
+						<div>
+							<img style="opacity: 1;" onload="fade_img(this);" src="__PUBLIC__/couplet/index1_files/2018nianduilianliulianfu_9089179_small.jpg" alt="2018年对联六联幅"
+							 height="347" width="204">
+						</div>
+						<div class="water_user">2018年
+							<strong>对联</strong>六
+							<strong>联</strong>幅</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/9089013.html">
+						<div>
+							<img style="opacity: 1;" onload="fade_img(this);" src="__PUBLIC__/couplet/index1_files/2018gounianxinchunduilian_9089013_small.jpg"
+							 alt="2018狗年新春对联" height="250" width="204">
+						</div>
+						<div class="water_user">2018狗年新春
+							<strong>对联</strong>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/8864201.html">
+						<div>
+							<img style="opacity: 1;" onload="fade_img(this);" src="__PUBLIC__/couplet/index1_files/xinchunduiliansheji_8864201_small.jpg" alt="新春对联设计"
+							 height="225" width="204">
+						</div>
+						<div class="water_user">新春
+							<strong>对联</strong>设计</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/8891397.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20171103/chunjieduilianfuxinggaozhao_8891397_small.jpg"
+							 src="__PUBLIC__/couplet/index1_files/chunjieduilianfuxinggaozhao_8891397_small.jpg" alt="春节对联福星高照" height="232" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">春节
+							<strong>对联</strong>福星高照</div>
+					</a>
+				</li>
+				
+				<li>
+					<a href="/couplet/library/detail/id/8262685.html">
+						<div class="juchibox">
+							<span class="juchi"></span>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20170527/2017nianjinianchunlianduiliansheji_8262685_small.jpg"
+							 src="__PUBLIC__/couplet/index1_files/2017nianjinianchunlianduiliansheji_8262685_small.jpg" alt="2017年鸡年春联对联设计" height="676" width="204"
+							 style="display: inline;">
+						</div>
+						<div class="water_user">2017年鸡年春
+							<strong>联对联</strong>设计</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/7823121.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20170124/chunjienianhuaduilian_7823121_small.jpg" src="__PUBLIC__/couplet/index1_files/chunjienianhuaduilian_7823121_small.jpg"
+							 alt="春节年画对联" height="307" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">春节年画
+							<strong>对联</strong>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/7784253.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20170116/2017nianjinianchunlianduiliantaozhuangsheji_7784253_small.jpg"
+							 src="__PUBLIC__/couplet/index1_files/2017nianjinianchunlianduiliantaozhuangsheji_7784253_small.jpg" alt="2017年鸡年春联对联套装设计" height="289"
+							 width="204" style="display: inline;">
+						</div>
+						<div class="water_user">2017年鸡年春
+							<strong>联对联</strong>套装设计</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/8109315.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheying/20170418/laxiangnazhuoduiliandenvhai_8109315_small.jpg"
+							 src="__PUBLIC__/couplet/index1_files/laxiangnazhuoduiliandenvhai_8109315_small.jpg" alt="蜡像拿着对联的女孩" height="311" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">蜡像拿着
+							<strong>对联</strong>的女孩</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/7656291.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20161220/caiyuanguangjinduilianxiqingbeijing_7656291_small.jpg"
+							 src="__PUBLIC__/couplet/index1_files/caiyuanguangjinduilianxiqingbeijing_7656291_small.jpg" alt="财源广进对联喜庆背景" height="204" width="204"
+							 style="display: inline;">
+						</div>
+						<div class="water_user">财源广进
+							<strong>对联</strong>喜庆背景</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/8055205.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheying/20170405/chuantongzhongshiguaduiliandetingtang_8055205_small.jpg"
+							 src="__PUBLIC__/couplet/index1_files/chuantongzhongshiguaduiliandetingtang_8055205_small.jpg" alt="传统中式挂对联的厅堂" height="306" width="204"
+							 style="display: inline;">
+						</div>
+						<div class="water_user">传统中式挂
+							<strong>对联</strong>的厅堂</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/7947199.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheying/20170306/duilian_7947199_small.jpg" src="__PUBLIC__/couplet/index1_files/duilian_7947199_small.jpg"
+							 alt="对联" height="306" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">
+							<strong>对联</strong>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/7696871.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20161228/menqianduiliansheji_7696871_small.jpg" src="__PUBLIC__/couplet/index1_files/menqianduiliansheji_7696871_small.jpg"
+							 alt="门前对联设计" height="136" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">门前
+							<strong>对联</strong>设计</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/7617333.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20161212/2017jinianhongsexiqingchunjieduiliansheji_7617333_small.jpg"
+							 src="__PUBLIC__/couplet/index1_files/2017jinianhongsexiqingchunjieduiliansheji_7617333_small.jpg" alt="2017鸡年红色喜庆春节对联设计" height="228"
+							 width="204" style="display: inline;">
+						</div>
+						<div class="water_user">2017鸡年红色喜庆春节
+							<strong>对联</strong>设计</div>
+					</a>
+				</li>
+				
+				<li>
+					<a href="/couplet/library/detail/id/7655927.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20161221/2017jinianchunjieduilianfuzifutiesheji_7655927_small.jpg"
+							 src="__PUBLIC__/couplet/index1_files/2017jinianchunjieduilianfuzifutiesheji_7655927_small.jpg" alt="2017鸡年春节对联福字福贴设计" height="297"
+							 width="204" style="display: inline;">
+						</div>
+						<div class="water_user">2017鸡年春节
+							<strong>对联</strong>福字福贴设计</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/9107217.html">
+						<div>
+							<img style="opacity: 1;" onload="fade_img(this);" src="__PUBLIC__/couplet/index2_files/2018gounianhongsexiqingchunjieduilian_9107217_small.jpg"
+							 alt="2018狗年红色喜庆春节对联" height="208" width="204">
+						</div>
+						<div class="water_user">2018狗年红色喜庆
+							<strong>春节对联</strong>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/8843677.html">
+						<div>
+							<img style="opacity: 1;" onload="fade_img(this);" src="__PUBLIC__/couplet/index2_files/gaodangchunjieduiliansheji_8843677_small.jpg"
+							 alt="高档春节对联设计" height="225" width="204">
+						</div>
+						<div class="water_user">高档
+							<strong>春节对联</strong>设计</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/8891401.html">
+						<div>
+							<img style="opacity: 1;" onload="fade_img(this);" src="__PUBLIC__/couplet/index2_files/chunjieduilianxinchundaji_8891401_small.jpg"
+							 alt="春节对联新春大吉" height="222" width="204">
+						</div>
+						<div class="water_user">
+							<strong>春节对联</strong>新春大吉</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/8945423.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20171115/chunjiefuxinggaozhaoduiliansheji_8945423_small.jpg"
+							 src="__PUBLIC__/couplet/index2_files/chunjiefuxinggaozhaoduiliansheji_8945423_small.jpg" alt="春节福星高照对联设计" height="306" width="204"
+							 style="display: inline;">
+						</div>
+						<div class="water_user">
+							<strong>春节</strong>福星高照
+							<strong>对联</strong>设计</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/9089185.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20180103/xiqinggounianduilian_9089185_small.jpg" src="__PUBLIC__/couplet/index2_files/xiqinggounianduilian_9089185_small.jpg"
+							 alt="喜庆狗年对联" height="347" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">喜庆狗年
+							<strong>对联</strong>
+						</div>
+					</a>
+				</li>
+				
+				
+			
+				<li>
+					<a href="/couplet/library/detail/id/9072251.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20171219/chunjieduiliansheji_9072251_small.jpg" src="__PUBLIC__/couplet/index2_files/chunjieduiliansheji_9072251_small.jpg"
+							 alt="春节对联设计" height="204" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">
+							<strong>春节对联</strong>设计</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/9089013.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20171228/2018gounianxinchunduilian_9089013_small.jpg"
+							 src="__PUBLIC__/couplet/index2_files/2018gounianxinchunduilian_9089013_small.jpg" alt="2018狗年新春对联" height="250" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">2018狗年新春
+							<strong>对联</strong>
+						</div>
+					</a>
+				</li>
+				
+				<li>
+					<a href="/couplet/library/detail/id/7667595.html">
+						<div class="juchibox">
+							<span class="juchi"></span>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20161223/2017jinianchunjieduilianmobanxiazai_7667595_small.jpg"
+							 src="__PUBLIC__/couplet/index2_files/2017jinianchunjieduilianmobanxiazai_7667595_small.jpg" alt="2017鸡年春节对联" height="676" width="204"
+							 style="display: inline;">
+						</div>
+						<div class="water_user">2017鸡年
+							<strong>春节对联</strong></div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/7423893.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20161108/2017jinianchunjieduilianfuzi_7423893_small.jpg"
+							 src="__PUBLIC__/couplet/index2_files/2017jinianchunjieduilianfuzi_7423893_small.jpg" alt="2017鸡年春节对联福字" height="220" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">2017鸡年
+							<strong>春节对联</strong>福字</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/4468124.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20150605/fuguipinganchunjieduilianshejimoban_4468124_small.jpg"
+							 src="__PUBLIC__/couplet/index2_files/fuguipinganchunjieduilianshejimoban_4468124_small.jpg" alt="富贵平安春节对联" height="205" width="204"
+							 style="display: inline;">
+						</div>
+						<div class="water_user">富贵平安
+							<strong>春节对联</strong></div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/2427788.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20131128/2014chunjieduilian_2427788_small.jpg" src="__PUBLIC__/couplet/index2_files/2014chunjieduilian_2427788_small.jpg"
+							 alt="2014春节对联" height="242" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">2014
+							<strong>春节对联</strong>
+						</div>
+					</a>
+				</li>
+				<!-- 精选专辑 start -->
+				<!-- 精选专辑 end -->
+			</ul>
+			<ul class="col" style="margin-right:0px">
+				<li>
+					<a href="/couplet/library/detail/id/9107217.html">
+						<div>
+							<img style="opacity: 1;" onload="fade_img(this);" src="__PUBLIC__/couplet/index1_files/2018gounianhongsexiqingchunjieduilian_9107217_small.jpg"
+							 alt="2018狗年红色喜庆春节对联" height="208" width="204">
+						</div>
+						<div class="water_user">2018狗年红色喜庆春节
+							<strong>对联</strong>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/9059089.html">
+						<div class="juchibox">
+							<span class="juchi"></span>
+							<img style="opacity: 1;" onload="fade_img(this);" src="__PUBLIC__/couplet/index1_files/xinchunchunjieduilian_9059089_small.jpg"
+							 alt="新春春节对联" height="769" width="204">
+						</div>
+						<div class="water_user">新春春节
+							<strong>对联</strong>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/8843675.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20171025/xiqinghuabianyangshiduilian_8843675_small.jpg"
+							 src="__PUBLIC__/couplet/index1_files/xiqinghuabianyangshiduilian_8843675_small.jpg" alt="喜庆花边样式对联" height="225" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">喜庆花边样式
+							<strong>对联</strong>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/8891401.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20171103/chunjieduilianxinchundaji_8891401_small.jpg"
+							 src="__PUBLIC__/couplet/index1_files/chunjieduilianxinchundaji_8891401_small.jpg" alt="春节对联新春大吉" height="222" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">春节
+							<strong>对联</strong>新春大吉</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/8698775.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20170912/chunlianduiliansheji_8698775_small.jpg" src="__PUBLIC__/couplet/index1_files/chunlianduiliansheji_8698775_small.jpg"
+							 alt="春联对联设计" height="275" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">春
+							<strong>联对联</strong>设计</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/8065509.html">
+						<div class="juchibox">
+							<span class="juchi"></span>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20170410/qiyexinchunduilian_8065509_small.jpg"
+							 src="__PUBLIC__/couplet/index1_files/qiyexinchunduilian_8065509_small.jpg" alt="企业新春对联" height="765" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">企业新春
+							<strong>对联</strong>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/7823117.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20170124/zhongguofeng2017chunjieduilian_7823117_small.jpg"
+							 src="__PUBLIC__/couplet/index1_files/zhongguofeng2017chunjieduilian_7823117_small.jpg" alt="中国风2017春节对联" height="307" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">中国风2017春节
+							<strong>对联</strong>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/8122115.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20170420/yingxinnianchunjiegongmenduilian_8122115_small.jpg"
+							 src="__PUBLIC__/couplet/index1_files/yingxinnianchunjiegongmenduilian_8122115_small.jpg" alt="迎新年春节拱门对联" height="137" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">迎新年春节拱门
+							<strong>对联</strong>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/7667595.html">
+						<div class="juchibox">
+							<span class="juchi"></span>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20161223/2017jinianchunjieduilianmobanxiazai_7667595_small.jpg"
+							 src="__PUBLIC__/couplet/index1_files/2017jinianchunjieduilianmobanxiazai_7667595_small.jpg" alt="2017鸡年春节对联" height="676" width="204"
+							 style="display: inline;">
+						</div>
+						<div class="water_user">2017鸡年春节
+							<strong>对联</strong></div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/7715987.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20161230/2017xinnianduilian_7715987_small.jpg" src="__PUBLIC__/couplet/index1_files/2017xinnianduilian_7715987_small.jpg"
+							 alt="2017新年对联" height="194" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">2017新年
+							<strong>对联</strong>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/7636001.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20161221/2017jinianduilian_7636001_small.jpg" src="__PUBLIC__/couplet/index1_files/2017jinianduilian_7636001_small.jpg"
+							 alt="2017鸡年对联" height="204" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">2017鸡年
+							<strong>对联</strong>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/7947209.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheying/20170306/houmendeduilian_7947209_small.jpg" src="__PUBLIC__/couplet/index1_files/houmendeduilian_7947209_small.jpg"
+							 alt="后门的对联" height="136" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">后门的
+							<strong>对联</strong>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/7501987.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20161124/jinianduilianchunlianmenlianshejimoban_7501987_small.jpg"
+							 src="__PUBLIC__/couplet/index1_files/jinianduilianchunlianmenlianshejimoban_7501987_small.jpg" alt="鸡年对联春联门联" height="285" width="204"
+							 style="display: inline;">
+						</div>
+						<div class="water_user">鸡年
+							<strong>对联</strong>春
+							<strong>联</strong>门
+							<strong>联</strong></div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/7900183.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheying/20170223/siheyuandamendeduilian_7900183_small.jpg" src="__PUBLIC__/couplet/index1_files/siheyuandamendeduilian_7900183_small.jpg"
+							 alt="四合院大门的对联" height="306" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">四合院大门的
+							<strong>对联</strong>
+						</div>
+					</a>
+				</li>
+				
+				<li>
+					<a href="/couplet/library/detail/id/7293561.html">
+						<div>
+							<img class="lazy" 
+							 src="__PUBLIC__/couplet/index1_files/2017chuangyiduiduiliansheji_7293561_small.jpg" alt="2017创意对对联设计" height="140" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">2017创意
+							<strong>对对联</strong>设计</div>
+					</a>
+				</li>
+
+				<li>
+					<a href="/couplet/library/detail/id/9076435.html">
+						<div>
+							<img style="opacity: 1;" onload="fade_img(this);" src="__PUBLIC__/couplet/index2_files/2018gounianchunjieduilianchunliansheji_9076435_small.jpg"
+							 alt="2018狗年春节对联春联设计" height="322" width="204">
+						</div>
+						<div class="water_user">2018狗年
+							<strong>春节对联</strong>春
+							<strong>联</strong>设计</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/8864183.html">
+						<div>
+							<img style="opacity: 1;" onload="fade_img(this);" src="__PUBLIC__/couplet/index2_files/zhongguofeng2018chunjieduilian_8864183_small.jpg"
+							 alt="中国风2018春节对联" height="225" width="204">
+						</div>
+						<div class="water_user">中国风2018
+							<strong>春节对联</strong>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/9125905.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20180109/2018gounianchunlianduilianmoban_9125905_small.jpg"
+							 src="__PUBLIC__/couplet/index2_files/2018gounianchunlianduilianmoban_9125905_small.jpg" alt="2018狗年春联对联模版" height="201" width="204"
+							 style="display: inline;">
+						</div>
+						<div class="water_user">2018狗年春
+							<strong>联对联</strong>模版</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/8957711.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20171120/xiyingxinchunchunjieduilianchunlian_8957711_small.jpg"
+							 src="__PUBLIC__/couplet/index2_files/xiyingxinchunchunjieduilianchunlian_8957711_small.jpg" alt="喜迎新春春节对联春联" height="306" width="204"
+							 style="display: inline;">
+						</div>
+						<div class="water_user">喜迎新春
+							<strong>春节对联</strong>春
+							<strong>联</strong>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/9089179.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20180102/2018nianduilianliulianfu_9089179_small.jpg" src="__PUBLIC__/couplet/index2_files/2018nianduilianliulianfu_9089179_small.jpg"
+							 alt="2018年对联六联幅" height="347" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">2018年
+							<strong>对联</strong>六
+							<strong>联</strong>幅</div>
+					</a>
+				</li>
+				
+				<li>
+					<a href="/couplet/library/detail/id/8952721.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20171117/2018chunliansheji_8952721_small.jpg" src="__PUBLIC__/couplet/index2_files/2018chunliansheji_8952721_small.jpg"
+							 alt="2018春联设计" height="203" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">2018春
+							<strong>联</strong>设计</div>
+					</a>
+				</li>
+				
+				<li>
+					<a href="/couplet/library/detail/id/9022201.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20171201/nianhuoshengyanmenloushejisucai_9022201_small.jpg"
+							 src="__PUBLIC__/couplet/index2_files/nianhuoshengyanmenloushejisucai_9022201_small.jpg" alt="年货盛宴门楼设计素材" height="270" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">年货盛宴门楼设计素材</div>
+					</a>
+				</li>
+			
+				<li>
+					<a href="/couplet/library/detail/id/9121909.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20180108/2018gounianduilian_9121909_small.jpg" src="__PUBLIC__/couplet/index2_files/2018gounianduilian_9121909_small.jpg"
+							 alt="2018狗年对联" height="204" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">2018狗年
+							<strong>对联</strong>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/7823111.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20170124/zhongguofeng2017wufulinmenchunjieduilian_7823111_small.jpg"
+							 src="__PUBLIC__/couplet/index2_files/zhongguofeng2017wufulinmenchunjieduilian_7823111_small.jpg" alt="中国风2017五福临门春节对联" height="307"
+							 width="204" style="display: inline;">
+						</div>
+						<div class="water_user">中国风2017五福临门
+							<strong>春节对联</strong>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/7609807.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20161210/2017jinianchunjieduilianmobanxiazai_7609807_small.jpg"
+							 src="__PUBLIC__/couplet/index2_files/2017jinianchunjieduilianmobanxiazai_7609807_small.jpg" alt="2017鸡年春节对联模版下载" height="242" width="204"
+							 style="display: inline;">
+						</div>
+						<div class="water_user">2017鸡年
+							<strong>春节对联</strong>模版下载</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/5702266.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20151231/jinsechunjieduilian_5702266_small.jpg" src="__PUBLIC__/couplet/index2_files/jinsechunjieduilian_5702266_small.jpg"
+							 alt="金色春节对联" height="201" width="204" style="display: inline;">
+						</div>
+						<div class="water_user">金色
+							<strong>春节对联</strong>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a href="/couplet/library/detail/id/3761221.html">
+						<div>
+							<img class="lazy" data-original="http://img.redocn.com/sheji/20141222/2015yangnianchunjieduiliantupian_3761221_small.jpg"
+							 src="__PUBLIC__/couplet/index2_files/2015yangnianchunjieduiliantupian_3761221_small.jpg" alt="2015羊年春节对联图片" height="211" width="204"
+							 style="display: inline;">
+						</div>
+						<div class="water_user">2015羊年
+							<strong>春节对联</strong>图片</div>
+					</a>
+				</li>
+				<!-- 精选专辑 start -->
+				<!-- 精选专辑 end -->
+			</ul>
+			<!--<div class="ad-list"><script type="text/javascript">/*20:3 创建于 2015-03-06*/
+var cpro_id = "u1973640";
+</script><script src="http://cpro.baidustatic.com/cpro/ui/cm.js" type="text/javascript"></script></div>	--></div>
+	</section>
+	<div class="g-lists">
+		<span class="current">1</span>
+		<a href="/couplet/library?page=2">2</a>
+		<a href="/couplet/library?page=3">3</a>
+		<a href="/couplet/library?page=4">4</a>
+		<a href="/couplet/library?page=5">5</a>
+		<a href="/couplet/library?page=next">下一页</a>
+		<a href="/couplet/library?page=last">尾页</a>
+	</div>
+	<div style="overflow: hidden; transition: all 100ms linear; transform: translate(0px, 80px); display: none;" id="goTopBtn">
+		<i class="icons1"></i>
+		<i class="icons2"></i>
+		<i class="icons3"></i>
+	</div>
+	<script type="text/javascript">		$(function () {
+			//			 $(window).load(function (){
+			//		        $(".col img").each(function(){
+			//		            var imgh = $(this).height();
+			//		            $(this).parent("div").css("height",imgh);
+			//		        });
+			//		   	});
+			//		
+			//		    $(window).resize(function(e) {
+			//		        $(".col img").each(function(){
+			//		            $(this).height('auto');
+			//		            var imgh = $(this).height();
+			//		            $(this).parent("div").css("height",imgh);
+			//		        });
+			//		    });
+
+			goTopEx();
+			$(".nav-menus").click(function (event) {
+				//
+				$(".g-menu-lists").toggle('fast');
+			});
+			$("img.lazy").lazyload({
+				effect: "fadeIn",
+				threshold: 300,
+				container: $(".col")
+			});
+		});
+		$(window).on("load", function () {
+			var _h = $(window).height();
+			if ($("body").height() == _h) {
+				$("#bottom-footer").css({ "position": 'fixed', "bottom": '0', "left": 0 });
+			}
+		});
+	</script>
+	<!-- <div class="bottom_guanggao">
+		<a href="http://m.redocn.com/jiedan?ent=85" class="u-fixed-pic">
+			<img src="__PUBLIC__/couplet/index1_files/bottom_gg.png" alt="">
+		</a>
+	</div> -->
+	<footer class="g-footer">
+		<div class="am-footer-switch am-text-sm">
+			<p>对联文库</p>
+			<!-- <p>
+				<a href="tel:" class="redocn_mobile">电话&nbsp;400-1780-118</a>QQ&nbsp;800089192</p>
+			<p>
+				<a id="godesktop" class="am-color-redocn" href="">电脑版</a>
+				<span>找设计!&nbsp;上红动</span>
+			</p> -->
+		</div>
+	</footer>
+	
+	
+	   
 <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script src="__PUBLIC__/js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 
-   var ShareLink = "http://www.yykddn.com/couplet"; //默认分享链接
-   var ShareImgUrl = "http://www.yykddn.com/public/couplet/share.jpg"; //分享图标
-
+var ShareLink = "http://www.yykddn.com/couplet"; //默认分享链接
+var ShareImgUrl = "http://www.yykddn.com/public/couplet/share.jpg"; //分享图标
 
 $(function() {
 	if(isWeiXin()){
@@ -107,4 +1312,9 @@ function isWeiXin(){
 }
 </script>
 
-</body></html>
+
+
+
+</body>
+
+</html>

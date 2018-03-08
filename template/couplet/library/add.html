@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="//cdn.c3w.com.cn/css/weui.min.css"/>
 </head>
 <body>
+
+<div class="weui-msg__opr-area">
+    <p class="weui-btn-area">
+            <a href="/couplet/library/zidingyi" class="weui-btn weui-btn_default">自定义对联文库</a>
+    </p>
+</div>
+
 <form method="post">
  		<div class="weui-cells__title">横批</div>
         <div class="weui-cells">
@@ -33,6 +40,19 @@
                 <div class="weui-cell__bd">
                     <textarea class="weui-textarea" placeholder="请输入下联" name="second" rows="3"></textarea>
                 </div>
+            </div>
+        </div>
+
+        <div class="weui-cell weui-cell_select weui-cell_select-after">
+            <div class="weui-cell__hd">
+                <label for="" class="weui-label">类型</label>
+            </div>
+            <div class="weui-cell__bd">
+                <select class="weui-select" name="type">
+                    <option value="新春">新春</option>
+                    <option value="新婚">新婚</option>
+                    <option value="生意">生意</option>
+                </select>
             </div>
         </div>
 

@@ -473,12 +473,12 @@
         }
 
         .g-footer-fixed a#gaitu-btn {
-            background: #991010 url(http://static.redocn.com/usercenter/m/mizui/images/icon-gaitu-new.png) no-repeat center;
+            background: #991010 url(__PUBLIC__/couplet/edit1.png) no-repeat center;
             background-size: 80%;
         }
 
         .g-footer-fixed a.order-btn {
-            background: #41c42d url(http://static.redocn.com/usercenter/m/mizui/images/icon-design.png) no-repeat center;
+            background: #41c42d url(__PUBLIC__/couplet/buy.png) no-repeat center;
             background-size: 90%;
         }
 
@@ -846,7 +846,7 @@
             <dl>
                 <dt>
                     <b>
-                        <span>￥</span>{$price}</b> 元</dt>
+                        <span>￥</span>{$info.price}</b> 元</dt>
                 <dd class="c-666 text-10">
                     <span class="text-10">编号：{$id}</span>&nbsp;&nbsp;&nbsp;&nbsp;
                     <!-- <span class="text-10">格式：PSD</span>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -863,16 +863,16 @@
     <footer class="g-footer-fixed">
         <div class="am-g am-g-collapse">
             <div class="am-u-sm-3 sc_box">
-                <a class="u-coll-btn" id="shouchang_btn"></a>
+                <a href="javascript:alert('收藏成功');" class="u-coll-btn" id="shouchang_btn"></a>
             </div>
             <div class="am-u-sm-3 down_box">
-                <a href="/couplet/library/download?id={$id}" class="u-down-btn"></a>
+                <a href="javascript:alert('暂不提供下载');" class="u-down-btn"></a>
             </div>
             <div class="am-u-sm-3 gaitu_box">
-                <a href="/couplet/library/edit?id={$id}" id="gaitu-btn"></a>
+                <a href="/couplet/library/add?id={$id}" id="gaitu-btn"></a>
             </div>
             <div class="am-u-sm-3 order_box">
-                <a href="/couplet/library/buy?id={$id}" class="order-btn"></a>
+                <a href="/couplet/index/buy?id={$id}" class="order-btn"></a>
             </div>
         </div>
     </footer>
