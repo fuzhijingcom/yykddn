@@ -42,7 +42,7 @@ class Jijian extends MobileBase {
         
     public function index(){
     	
-    	$condition['order_id'] = array('gt',10189);
+    	$condition['order_id'] = array('gt',16978);
     	$condition['pay_status'] = array('eq',1);
     	$condition['type'] = array('eq','ji');
     	
@@ -50,7 +50,7 @@ class Jijian extends MobileBase {
     	$list7 = D('kd_order')->where($condition)->where('order_status',7)->field('order_id')->order('order_id desc')->select();
     	
     	
-    	$con['order_id'] = array('gt',10189);
+    	$con['order_id'] = array('gt',16978);
     	$con['pay_status'] = array('eq',0);
     	$con['type'] = array('eq','ji');
     	$list8 = D('kd_order_ji')->where($con)->where('order_status',8)->field('order_id')->order('order_id desc')->select();
@@ -85,7 +85,7 @@ class Jijian extends MobileBase {
         	$condition['pay_status'] = array('eq',1);
         	$database = D('kd_order');
         }
-	        $condition['order_id'] = array('gt',10189);
+	        $condition['order_id'] = array('gt',16978);
 	        $condition['order_status'] = array('eq',$order_status);
 	        $condition['type'] = array('eq','ji');
         

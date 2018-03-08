@@ -46,6 +46,18 @@ class Qiang extends MobileBase {
        return $this->fetch();
     }
     
+    public function detail(){
+    	$id = I('id');
+    	if($id){
+    		$order_info = M('kd_order')->where('order_id',$id)->find();
+    		$this->assign('order_info',$order_info);
+    	}
+    	
+    	return $this->fetch();
+    }
+    
+    
+    
     public function history(){
     	
     	$history= M('kd_order_handle')->where('status',1)->order('order_id desc')->select();
@@ -58,8 +70,11 @@ class Qiang extends MobileBase {
     
    public function change(){
        $id = I('id');
+       
+    
        $qiang = I('qiang');
        $order = M('kd_order')->where('order_id',$id)->find();
+       
        //判断订单，可不可以取消
        $dangqian_status = $order['order_status'];
        if($dangqian_status == 1){
@@ -145,9 +160,11 @@ class Qiang extends MobileBase {
         if(!empty($extra)){
             M('kd_order_handle')->where(array('order_id'=>$id))->save(array('status'=> 1));
         }
-        
-        //登记退单次数
-        M('users_qiang')->where(array('user_id'=> $uid_receiver))->setDec('credit',1);
+        $kou = I('kou');
+        if($kou == '1'){
+	        //登记退单次数
+	         M('users_qiang')->where(array('user_id'=> $uid_receiver))->setDec('credit',1);
+        }
         
         $this->success('更改成功','work/qiang/index');
    }

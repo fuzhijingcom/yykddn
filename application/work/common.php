@@ -1,5 +1,60 @@
 <?php
 use think\Db;
+
+//总的状态
+function get_order_status($order_status) {
+	
+	switch ($order_status) {
+		case 0:
+			$order_status = '未拿';
+			break;
+			
+		case 1:
+			$order_status = '已拿';
+			break;
+		case 10:
+			$order_status = '取消';
+			break;
+		case 6:
+			$order_status = '已接单，正在派送中';
+			break;
+		case 7:
+			$order_status = '已完成';
+			break;
+		case 8:
+			$order_status = '已派送，待确认';
+			break;
+		case 5:
+			$order_status = '已删除';
+			break;
+			
+		case 9:
+			$order_status = '等待发寄件图';
+			break;
+			
+		case 4:
+			$order_status = '已接单，等待上门收件';
+			break;
+		case 10:
+			$order_status = '被删除';
+			break;
+			
+		case 11:
+			$order_status = '已发单号';
+			break;
+		case 12:
+			$order_status = '投诉中';
+			break;
+		case 3:
+			$order_status = '取消代拿';
+			break;
+		default:
+			$order_status = '状态出错';;
+			break;
+	}
+	return $order_status;
+}
+
 function account($user_id){
 	return  M('users')->where('user_id',$user_id)->getField('user_money');
 }
@@ -72,9 +127,13 @@ function get_name_by_type($type) {
     return $kuaidi_name;
 }
 function get_name_by_uid($uid) {
-   
-    $name = M('users_qiang') ->where('user_id',$uid)->getField('name');
+    $name = M('yuangong') ->where('yid',$uid)->getField('name');
     
+    if(!$name){
+        $name = M('users_qiang') ->where('user_id',$uid)->getField('name');
+    }else{
+        return $name;
+    }
     
     if(!$name){
         $name = M('user_address') ->where('user_id',$uid)->getField('consignee');
