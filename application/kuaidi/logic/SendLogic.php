@@ -82,12 +82,13 @@ class SendLogic extends Model
     public function push_msg_all($openid,$order_id,$name,$sushe,$kuaidi_name,$discount){
         $str = mb_substr($name, 0, 1,'utf-8');
         $name = $str.'**';
-        
+        $yongjin = yongjin($order_id);
+
         if((float)$discount > 0 ){
-            $first = "新订单来了。加价（".$discount."元）
+            $first = "新订单来了。加价".$discount."元（佣金￥".$yongjin."元） 
 ";
         }else{
-            $first = "新订单来了。
+            $first = "新订单来了。（佣金￥".$yongjin."元）
 ";
         }
         
@@ -123,11 +124,8 @@ class SendLogic extends Model
     
                 'remark'=>array(
                     'value'=>"
-
 注意：你已经实名验证，请不要恶意抢单。
-    
 如需关闭消息提醒，请点击 菜单栏 、推送设置，关闭提醒。
-    
 点击“详情”，进入抢单大厅。",
                     'color'=>"#000099"
                 )
