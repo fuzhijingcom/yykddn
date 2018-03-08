@@ -241,7 +241,7 @@ class Index extends MobileBase {
         }
         
         $code = I('code');
-        if($code !== '4f2016c6b934d55bd7120e5d0e62cce3'){
+        if($code !== '4f2016c6b934d55bd7120e5d0e62cce3666'){
         	$this->error("验证链接已经失效");
         	exit;
         }

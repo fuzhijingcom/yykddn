@@ -157,7 +157,8 @@ class Order extends MobileBase {
         if ($data['errcode'] == 0){
             
             $kouchu = M('kd')->where(array('type'=>$order['type']))->getField('money');
-            $money = (float)$order['order_amount'] - (float)$kouchu;
+           // $money = (float)$order['order_amount'] - (float)$kouchu;
+            $money = yongjin($order_id);
             $payresult = accountLog($user_id,$money,$money,$order_id."收入".$money."元,增加".$money."积分");
             
             if($payresult == true){

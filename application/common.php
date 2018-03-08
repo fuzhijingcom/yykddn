@@ -13,6 +13,39 @@
  */
 use think\Db;
 
+function yongjin($order_id){
+    $order = M('kd_order')->where('order_id',$order_id)->find();
+    $order_amount = $order['order_amount'];
+    $add_time = $order['add_time'];
+    $add_time = strtotime($add_time);
+    $today = strtotime(date("Y-m-d"));
+
+    if($add_time < $today){
+        $add = 0.3;
+    }else{
+        $add = 0.1;
+    }
+  
+
+    $type = $order['type'];
+    $kouchu = M('kd')->where('type',$type)->getField('money');
+    
+    $type = $order['type'];
+    if($type=='wm'){
+        $fen = (int)$order['admin_note'];
+        
+        $yongjin = (float)$order_amount - ( (float)$kouchu  * $fen);
+        
+    }else{
+        
+    $yongjin = (float)$order_amount - (float)$kouchu + (float)$add;
+    
+    }
+    
+    return $yongjin;
+}
+
+
 function update_pay_status_diy($order_sn,$source,$ext=array())
 {
 
@@ -57,6 +90,17 @@ function update_pay_status_diy($order_sn,$source,$ext=array())
     	if(isset($ext['out_trade_no'])) $updata['out_trade_no'] = $ext['out_trade_no'];
     	M('kd_order_sz')->where("order_sn", $order_sn)->save($updata);
     
+    	
+    	
+    	$order_id = $order['order_id'];
+    	$url = 'http://v.yykddn.com/kuaidi/send/check?order_id='.$order_id.'&source=sz';
+    	$ch = curl_init();
+    	curl_setopt($ch, CURLOPT_URL, $url);
+    	curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+    	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    	$out = curl_exec($ch);
+    	curl_close($ch);
+    	
     }
     
     
