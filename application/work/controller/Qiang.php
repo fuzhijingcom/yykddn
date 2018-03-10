@@ -71,8 +71,8 @@ class Qiang extends MobileBase {
    public function change(){
        $id = I('id');
        
-    
        $qiang = I('qiang');
+
        $order = M('kd_order')->where('order_id',$id)->find();
        
        //判断订单，可不可以取消
