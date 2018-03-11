@@ -14,13 +14,7 @@ class Userdata extends Controller {
         $this->weixin_config = M('wx_user')->find(); //获取微信配置
     }
     
-    public function index() {
-        $token = $this->get_access_token();
-        
-        echo $token;
-        
-        //$this->public_assign();
-    }
+   
     
     public function getuser(){
         $mobile = I('mobile');
@@ -159,4 +153,14 @@ class Userdata extends Controller {
     }
     
    
+    public function get_all_userdata(){
+        $openid = I('openid');
+        if(!$openid){
+            echo "no openid";
+            exit;
+        }
+        $data = M('users')->field('nickname,sex,head_pic')->where(array('openid'=>$openid))->find();
+        echo json_encode($data,JSON_UNESCAPED_UNICODE);
+    }
+
 }

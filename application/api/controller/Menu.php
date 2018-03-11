@@ -9,104 +9,51 @@ class Menu extends Controller {
 		"name":"香港代购化妆品",
 		"url":"http://www.yykddn.com/index.php/mobile/Goods/goodsList/id/855.html"
 	} */
-    
-    public function create(){
-        $access_token = access_token();
-         
-         $json='{
-	        "button":[
-	         {
-				
-	           "name":"点此下单",
-	           "sub_button":[
-	           {
-				"type":"view",
-				"name":"快递代拿下单",
-				"url":"http://www.yykddn.com/kuaidi"   
-	           },
-	           {
-				"type":"view",
-				"name":"帮买东西下单",
-				"url":"http://www.yykddn.com/song"   
-	           },
-             
-	           {
-				"type":"view",
-				"name":"在线寄件快递",
-				"url":"http://www.yykddn.com/jijian"   
-	           },
-                {
-				"type":"view",
-				"name":"申请自由快递员",
-				"url":"http://www.yykddn.com/qiangdan/index"   
-	           },
+	
+	
+
+	// ,
+	// {
+	// 	"type":"view",
+	// 	"name":"帮买东西下单",
+	// 	"url":"http://www.yykddn.com/song"   
+	//    }
+/*
+
+,
                 {
 				"type":"view",
 				"name":"申请校园合伙人",
 				"url":"http://www.yykddn.com/jiameng"   
 	           }
-	           
-	           ]
-	        },
-	         {
-	           "name":"查询订单",
-	           "sub_button":[
-                
-	           {
+
+ {
 				"type":"view",
-				"name":"所有订单查询",
-				"url":"http://www.yykddn.com/kuaidi/order/order_list"   
+				"name":"在线寄件快递",
+				"url":"http://www.yykddn.com/jijian"   
 	           },
-             
-             {
-	             "type":"view",
-				"name":"联系在线客服",
-				"url":"http://www.yykddn.com/kefu" 
-	           },
-	           {
-				"type":"view",
-				"name":"账户余额查询",
-				"url":"http://www.yykddn.com/my/user/account"   
-	           },
+,
 	          
                 {
 				"type":"view",
 				"name":"抢单推送设置",
 				"url":"http://www.yykddn.com/qiangdan/index/tuisong"   
-	           },
-              {
-				"type":"view",
-				"name":"抢单员工作台",
-				"url":"http://www.yykddn.com/qiangdan"   
 	           }
-             ]
-	        
-	        },
-	        
-	        
-	        {
-	           "name":"手机维修",
-	           "sub_button":[
-				{
-				"type":"view",
-				"name":"手机回收下单",
-				"url":"http://www.yykddn.com/repair/mobile/huishou"   
-	           },
+,
 	           {
 				"type":"view",
 				"name":"电脑维修下单",
 				"url":"http://www.yykddn.com/repair/computer"   
-	           },
-				{
+	           }
+{
 				"type":"view",
-				"name":"手机维修下单",
-				"url":"http://www.yykddn.com/repair"   
+				"name":"手机回收下单",
+				"url":"http://www.yykddn.com/repair/mobile/huishou"   
 	           },
-              
-	           {
+{
 				"type":"view",
-				"name":"驿源充电宝",
-				"url":"http://www.yykddn.com/share/powerbank/scan"   
+				"name":"对联文库",
+				"url":"http://www.yykddn.com/couplet"   
 	           },
                
               
@@ -115,6 +62,72 @@ class Menu extends Controller {
 				"name":"驿源【工作台】",
 				"url":"http://www.yykddn.com/work/"   
 	           }
+
+
+*/ 
+
+    public function create(){
+        $access_token = access_token();
+         
+         $json='{
+	        "button":[
+	         {
+				
+	           "name":"快递代拿",
+	           "sub_button":[
+	           {
+				"type":"view",
+				"name":"快递代拿下单",
+				"url":"http://c3w.cc/entry/click?ReturnUrl=http%3a%2f%2fwww.yykddn.com%2fkuaidi"   
+	           },
+			  {
+				"type":"view",
+				"name":"所有订单查询",
+				"url":"http://www.yykddn.com/kuaidi/order/order_list"   
+	           },
+			   {
+				"type":"view",
+			   "name":"联系在线客服",
+			   "url":"http://www.yykddn.com/kefu" 
+			  }
+
+	           ]
+	        },
+	         {
+	           "name":"抢单赚钱",
+	           "sub_button":[
+                
+					{
+					"type":"view",
+					"name":"抢单员工作台",
+					"url":"http://c3w.cc/entry/click?ReturnUrl=http%3a%2f%2fwww.yykddn.com%2fqiangdan"   
+				   },
+					{
+					"type":"view",
+					"name":"申请自由快递员",
+					"url":"http://www.yykddn.com/qiangdan/index"   
+				   },
+				   {
+					"type":"view",
+					"name":"账户余额查询",
+					"url":"http://www.yykddn.com/my/user/account"   
+				   }
+              
+             ]
+	        
+	        },
+	        
+	        
+	        {
+	           "name":"门店服务",
+	           "sub_button":[
+				
+				{
+					"type":"view",
+					"name":"手机维修下单",
+					"url":"http://www.yykddn.com/repair"   
+				}
+  
 	        
              ]
 	          }
