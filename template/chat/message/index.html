@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" /> 
   <link rel="stylesheet" href="__PUBLIC__/chat_detail_files/boot.css" /> 
   <link rel="stylesheet" href="__PUBLIC__/chat_detail_files/chat_detail.css" /> 
+  <script src="__PUBLIC__/js/jquery-1.10.2.min.js"></script>
   <title>{$receive|get_name_by_uid}</title>  
   <div> 
    <style>
@@ -183,11 +184,26 @@
      </div> 
      <div id="extra-button-fold" style="display: none;"> 
      </div> 
-     <div class="send-button" style="" onclick="document.getElementById('subform').submit();return false" >
+     <div class="send-button" style="" onclick="javascript:send();" >
       发送
      </div> 
     </div> 
     </form>
+
+    <!-- 优化发送 -->
+<script>
+    function send(){
+        var content = $('#message-input').val();
+        if(content){
+            $('#subform').submit();
+            $(".send-button").removeAttr("onclick");
+            $('#message-input').html("");
+        }else{
+            alert("消息不能为空");
+        }
+    }
+</script>
+
     <div id="extra-panel" style="display: none;"> 
      <div class="panel-btn"> 
       <div class="panel-btn-image" id="find-order"></div> 
@@ -213,7 +229,8 @@
     目测无用
     <script src="__PUBLIC__/chat_detail_files/vender_c96930d17911e8faa7ea.js"></script>
     <script src="__PUBLIC__/chat_detail_files/common_7ff89eb49f4366b4ad81.js"></script>
-    <script src="__PUBLIC__/chat_detail_files/chat_detail_v3_e5af4e077e16bdc70890.js"></script> -->
+    <script src="__PUBLIC__/chat_detail_files/chat_detail_v3_e5af4e077e16bdc70890.js"></script> 
+-->
     <script type="text/javascript">
     	window.location.hash="anchor";
     </script> 
